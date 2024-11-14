@@ -1,0 +1,22 @@
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .login-button, .register-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .login-button {
+    background-color: white;
+    color: green;
+  }
+  
+  .register-button {
+    background-color: white;
+    color: green;
+  }
+  

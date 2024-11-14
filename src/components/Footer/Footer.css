@@ -1,0 +1,25 @@
+.footer {
+    background-color: green;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+  }
+  
+  .contact-info, .location-info {
+    max-width: 45%;
+  }
+  
+  .footer p {
+    margin: 5px 0;
+  }
+  
+  .footer-content p, .footer-content strong {
+    text-align: left;
+  }
+  

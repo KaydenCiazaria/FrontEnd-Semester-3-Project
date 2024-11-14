@@ -1,0 +1,11 @@
+.search-bar {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .search-bar input {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
