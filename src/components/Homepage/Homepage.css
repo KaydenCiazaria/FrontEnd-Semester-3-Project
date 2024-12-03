@@ -1,0 +1,13 @@
+.homepage {
+    display: flex;
+    height: 70%;
+    flex: 1;
+}
+
+.villa-container {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+  height: 70vh;
+  padding: 20px;
+}

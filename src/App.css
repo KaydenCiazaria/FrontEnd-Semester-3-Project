@@ -1,15 +1,8 @@
-.villa-container {
-  display: flex;
-  flex-wrap: wrap;
-  overflow-y: scroll;
-  height: 70vh;
-  padding: 20px;
-}
-
 .App {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  justify-content: space-between;
 }
 
 body, html {
