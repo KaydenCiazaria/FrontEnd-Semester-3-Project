@@ -1,6 +1,6 @@
 import React from 'react';
-import VillaCard from '../VillaCard/VillaCard';
-import './Homepage.css';
+import VillaCard from '../components/VillaCard/VillaCard';
+import './Home.css';
 
 const villas = [
     {
@@ -14,7 +14,7 @@ const villas = [
     // Add more villa objects as needed
   ];
 
-  const Homepage = () => {
+  const Home = () => {
     return (
         <div className="villa-container">
         {villas.map((villa, index) => (
@@ -24,4 +24,4 @@ const villas = [
     );
   };
   
-  export default Homepage;
+  export default Home;

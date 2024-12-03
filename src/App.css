@@ -2,11 +2,22 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  justify-content: space-between;
 }
 
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
+}
+
+header {
+  flex: 0 0 auto; /* Header takes only as much space as it needs */
+}
+
+.homepage {
+  flex: 1 1 auto; /* Homepage will expand to take up available space */
+}
+
+footer {
+  flex: 0 0 auto; /* Footer takes only as much space as it needs */
 }
