@@ -3,7 +3,7 @@ import VillaDescription from "../components/VillaDescription/VillaDescription";
 import Form from "../components/Form/Form";
 import "./Home.css";
 
-const villas = [
+const villas = [ //Trying to fetch data from Home.js instead of this
   {
     image: "../../villa-image.jpg",
     title: "Beauvida Villa",
@@ -15,7 +15,7 @@ const villas = [
   // Add more villa objects as needed
 ];
 
-const VillaInformation = () => {
+const VillaInformation = () => { //Note: won't be needing villas.map as only 1 object of villa is send in VillaInformation.js
   return (
     <div className="parent">
       {villas.map((currentVilla, index) => (
