@@ -3,7 +3,6 @@ import React from 'react';
 import './VillaCard.css';
 
 const VillaCard = ({ villa }) => {
-  // note: { villa } replaces props.villa
   return (
     <div className="villa-card">
       <img src={villa.image} alt={villa.title} className="villa-image" />

@@ -17,8 +17,8 @@ const villas = [
   const Home = () => {
     return (
         <div className="villa-container">
-        {villas.map((villa, index) => (
-          <VillaCard key={index} villa={villa} />
+        {villas.map((currentVilla, index) => (
+          <VillaCard key={index} villa={currentVilla} />
         ))}
       </div>
     );
