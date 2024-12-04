@@ -6,7 +6,6 @@ import Footer from './components/Footer/Footer';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import VillaInformation from './pages/VillaInformation';
-import Form from './pages/Form';
 import './App.css';
 
 
@@ -23,7 +22,6 @@ function App() {
           <Route path="/" element={ <div className="home"><Home /></div>} />
           <Route path="/register" element={<Register />} /> 
           <Route path="/VillaInformation" element={<VillaInformation />} /> 
-          <Route path="/form" element={<Form />} /> 
         </Routes>
       
       <Footer />

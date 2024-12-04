@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import './Form.css';
 
-function Form() {
+const Form = () => {
   return (
     <form>
       <label>Enter your name:
@@ -11,8 +11,4 @@ function Form() {
   )
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
 export default Form;
-
-              
-

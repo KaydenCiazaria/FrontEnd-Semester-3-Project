@@ -4,7 +4,7 @@ import './Home.css';
 
 const villas = [
     {
-      image: '/path/to/villa-image.jpg',
+      image: '.././villa-image.png',
       title: 'Beauvida Villa',
       price: 'Rp. 200.000/Night',
       rating: '4/5',

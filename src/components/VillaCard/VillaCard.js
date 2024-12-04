@@ -10,7 +10,7 @@ const VillaCard = ({ villa }) => {
     onClick={() => navigate("/VillaInformation")}
     style={{ cursor: "pointer" }}
     >
-      <img src={villa.image} alt={villa.title} className="villa-image" />
+      <img src={villa.image} alt={villa.title + " Image"} className="villa-image" />
       <h3>{villa.title}</h3>
       <p>Price: {villa.price}</p>
       <p>Rating: {villa.rating} ⭐</p>
