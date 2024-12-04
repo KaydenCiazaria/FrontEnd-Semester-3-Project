@@ -1,19 +1,27 @@
-// src/components/VillaCard.js
 import React from 'react';
-import './VillaCard.css';
+import VillaDescription from '../components/VillaDescription/VillaDescription';
+import './Home.css';
 
-const VillaCard = ({ villa }) => {
-  return (
-    <div className="villa-card">
-      <img src={villa.image} alt={villa.title} className="villa-image" />
-      <h3>{villa.title}</h3>
-      <p>Price: {villa.price}</p>
-      <p>Rating: {villa.rating} ⭐</p>
-      <p>Address: {villa.address}</p>
-      <p>Tags: {villa.tags.join(', ')}</p>
-      <button className="reserve-button">Reserve Now</button>
-    </div>
-  );
-};
+const villas = [
+    {
+      image: '/path/to/villa-image.jpg',
+      title: 'Beauvida Villa',
+      price: 'Rp. 200.000/Night',
+      rating: '4/5',
+      address: 'Jl. Prasopaca Raya no.20, Kebayoran Baru, Jakarta Selatan',
+      tags: ['Swimming Pool', '3 bedrooms', '2 toilets', 'BBQ']
+    },
+    // Add more villa objects as needed
+  ];
 
-export default VillaCard;
+  const VillaInformation = () => {
+    return (
+        <div className="villa-container">
+        {villas.map((currentVilla, index) => (
+          <VillaDescription key={index} villa={currentVilla} />
+        ))}
+      </div>
+    );
+  };
+  
+  export default VillaInformation;

@@ -1,6 +1,6 @@
 // src/components/Header.js
 import React from 'react';
-import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
+import { useNavigate } from "react-router-dom";
 import SearchBar from '../SearchBar/SearchBar';
 import AuthButtons from '../AuthButtons/AuthButtons';
 import './Header.css';
