@@ -1,0 +1,41 @@
+/* Styling for the notification background */
+.notification-background {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: flex-start; /* Start from the top */
+    max-width: 1000px; /* Limit the maximum width */
+    height: 500px; /* Fixed height */
+    background-color: grey; /* Grey background */
+    border-radius: 12px; /* Rounded corners */
+    padding: 20px; /* Padding around the container */
+    box-sizing: border-box; /* Include padding in the width/height */
+  }
+  
+  /* Styling for the user type placeholder */
+  .user-type-placeholder {
+    width: 100%; /* Full width inside notification-background */
+    padding: 15px; /* Padding around the element */
+    margin-bottom: 20px; /* Space below the placeholder */
+    background-color: white; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: flex; /* Enable layout adjustments */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    font-size: 16px; /* Default font size */
+    color: #333; /* Text color */
+    font-weight: bold; /* Bold text for emphasis */
+  }
+  
+  /* Styling for the content box */
+  .content-box {
+    width: 100%; /* Full width inside notification-background */
+    height: calc(100% - 85px); /* Remaining space after user-type-placeholder */
+    background-color: white; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    padding: 20px; /* Padding inside the box */
+    box-sizing: border-box; /* Include padding in the dimensions */
+  }
+  
