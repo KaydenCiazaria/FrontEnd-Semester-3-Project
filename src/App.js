@@ -17,7 +17,11 @@ function AppHeader() {
   const location = useLocation();
 
   // Dynamically show NewHeader or Header
+
   if (location.pathname.startsWith("/headerPlain")) { 
+=======
+  if (location.pathname.startsWith("/headerPlain")) { //Changed the name
+
     return <HeaderPlain />;
   } else if (location.pathname.startsWith("/headerLoggedIn")) {
     return <HeaderLoggedIn />;
