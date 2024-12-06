@@ -1,28 +1,18 @@
-import React from "react";
-import VillaDescription from "../components/VillaDescription/VillaDescription";
-import Form from "../components/Form/Form";
-import "./Home.css";
+// src/pages/VillaInformation.js
+import React from 'react';
+import { useLocation } from "react-router-dom";
+import VillaDescription from '../components/VillaDescription/VillaDescription';
+import FormReservation from '../components/Form/FormReservation'; 
+import './VillaInformation.css';
 
-const villas = [ //Trying to fetch data from Home.js instead of this
-  {
-    image: "../../villa-image.jpg",
-    title: "Beauvida Villa",
-    price: "Rp. 200.000/Night",
-    rating: "4/5",
-    address: "Jl. Prasopaca Raya no.20, Kebayoran Baru, Jakarta Selatan",
-    tags: ["Swimming Pool", "3 bedrooms", "2 toilets", "BBQ"],
-  },
-  // Add more villa objects as needed
-];
+const VillaInformation = () => {
+  const location = useLocation(); // Access the current URL and information
+  const { villa } = location.state; // Accessing the state passed from VillaCard.js
 
-const VillaInformation = () => { //Note: won't be needing villas.map as only 1 object of villa is send in VillaInformation.js
   return (
     <div className="parent">
-      {villas.map((currentVilla, index) => (
-        <VillaDescription key={index} villa={currentVilla} />
-      ))}
-
-      <Form />
+      <VillaDescription villa={villa} /> {/* Display the villa details */}
+      <FormReservation /> 
     </div>
   );
 };

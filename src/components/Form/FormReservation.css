@@ -1,0 +1,5 @@
+/* Example CSS for the email input field */
+.reservation {
+    /* overide */
+    max-width:1000px;
+}

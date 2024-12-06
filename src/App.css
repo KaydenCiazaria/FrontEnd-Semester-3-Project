@@ -4,12 +4,6 @@
   height: 100vh;
 }
 
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
 header {
   flex: 0 0 auto; /* Header takes only as much space as it needs */
 }
