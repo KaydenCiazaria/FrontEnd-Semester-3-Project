@@ -8,7 +8,7 @@ const AuthButtons = () => {
   return (
     <div className="auth-buttons">
       <button className="login-button">Log In</button>
-      <button className="register-button" onClick={() => navigate("/register")}>Register</button>
+      <button className="register-button" onClick={() => navigate("headerPlain/register")}>Register</button>
     </div>
   );
 };
