@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import VillaInformation from "./pages/VillaInformation";
 import Notification from "./pages/Notification";
+import ReservationDetails from "./pages/ReservationDetails";
 import "./App.css";
 import "./assets/css/global.css";
 
@@ -16,7 +17,11 @@ function AppHeader() {
   const location = useLocation();
 
   // Dynamically show NewHeader or Header
+
+  if (location.pathname.startsWith("/headerPlain")) { 
+=======
   if (location.pathname.startsWith("/headerPlain")) { //Changed the name
+
     return <HeaderPlain />;
   } else if (location.pathname.startsWith("/headerLoggedIn")) {
     return <HeaderLoggedIn />;
@@ -32,8 +37,10 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/headerLoggedIn/Home" element={<Home />} />
+        <Route path="/headerLoggedIn/" element={<Home />} />
         <Route path="/headerPlain/register" element={<Register />} />
+        <Route path="/headerPlain/reservationDetails" element={<ReservationDetails />} />
+        
         <Route path="/headerLoggedIn/notification" element={<Notification />} />
         <Route path="/VillaInformation" element={<VillaInformation />} />
       </Routes>
