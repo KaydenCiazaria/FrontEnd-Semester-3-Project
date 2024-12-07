@@ -1,22 +1,23 @@
+/* AuthButtons.css */
 .auth-buttons {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .login-button, .register-button {
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .login-button {
-    background-color: white;
-    color: green;
-  }
-  
-  .register-button {
-    background-color: white;
-    color: green;
-  }
-  
+  display: flex;
+  flex-direction: column; /* Keep buttons above and below each other */
+  gap: 10px;
+}
+
+.login-button,
+.register-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: white;
+  color: black; /* Changed text color to black */
+  font-size: 14px; /* Adjusted for better readability */
+  text-align: center;
+}
+
+.login-button:hover,
+.register-button:hover {
+  background-color: #f0f0f0; /* Slightly darker on hover */
+}

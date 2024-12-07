@@ -12,16 +12,11 @@ import ReservationDetails from "./pages/ReservationDetails";
 import "./App.css";
 import "./assets/css/global.css";
 
-// Custom header logic
+// Custom logic to determine which header to render
 function AppHeader() {
   const location = useLocation();
 
-  // Dynamically show NewHeader or Header
-
-  if (location.pathname.startsWith("/headerPlain")) { 
-=======
-  if (location.pathname.startsWith("/headerPlain")) { //Changed the name
-
+  if (location.pathname.startsWith("/headerPlain")) {
     return <HeaderPlain />;
   } else if (location.pathname.startsWith("/headerLoggedIn")) {
     return <HeaderLoggedIn />;
@@ -33,19 +28,21 @@ function AppHeader() {
 function App() {
   return (
     <Router>
-      <AppHeader /> {/* Dynamically renders Header or NewHeader */}
-      
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/headerLoggedIn/" element={<Home />} />
-        <Route path="/headerPlain/register" element={<Register />} />
-        <Route path="/headerPlain/reservationDetails" element={<ReservationDetails />} />
+      <div className="App">
+        <AppHeader /> {/* Dynamically renders the appropriate header */}
         
-        <Route path="/headerLoggedIn/notification" element={<Notification />} />
-        <Route path="/VillaInformation" element={<VillaInformation />} />
-      </Routes>
-
-      <Footer />
+        <main className="homepage">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/headerPlain/register" element={<Register />} />
+            <Route path="/headerPlain/reservationDetails" element={<ReservationDetails />} />
+            <Route path="/headerLoggedIn/notification" element={<Notification />} />
+            <Route path="/VillaInformation" element={<VillaInformation />} />
+          </Routes>
+        </main>
+        
+        <Footer />
+      </div>
     </Router>
   );
 }

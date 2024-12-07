@@ -1,19 +1,36 @@
+/* Header.css */
+
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: green;
-    padding: 10px 20px;
-    color: white;
-  }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo img {
-    width: 40px;
-    margin-right: 10px;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: green;
+  padding: 10px 20px;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 75px;
+  margin-right: 10px;
+}
+
+.auth-buttons {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: flex-start; /* Align buttons to the left */
+  gap: 10px; /* Add spacing between the buttons */
+}
+
+.auth-buttons button {
+  width: 90px; /* Set a consistent width for both buttons */
+  padding: 8px; /* Adjust padding for consistent button size */
+  font-size: 14px; /* Adjust font size for readability */
+}
+
+/* Add a comment to allow size customization */
+/* To modify button sizes, adjust 'width' and 'padding' here */
