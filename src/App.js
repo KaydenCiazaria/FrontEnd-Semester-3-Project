@@ -9,6 +9,10 @@ import Register from "./pages/Register";
 import VillaInformation from "./pages/VillaInformation";
 import Notification from "./pages/Notification";
 import ReservationDetails from "./pages/ReservationDetails";
+import Property from "./pages/Property";
+import PropertySchedule from "./pages/PropertySchedule";
+import PropertyEdit from "./pages/PropertyEdit";
+import PropertyAdd from "./pages/PropertyAdd";
 import "./App.css";
 import "./assets/css/global.css";
 
@@ -39,6 +43,13 @@ function App() {
         
         <Route path="/headerLoggedIn/notification" element={<Notification />} />
         <Route path="/VillaInformation" element={<VillaInformation />} />
+        <Route path="headerLoggedIn/villaInformation" element={<VillaInformation />} />
+
+        <Route path="headerLoggedIn/property" element={<Property />} />
+        <Route path="headerLoggedIn/propertySchedule" element={<PropertySchedule />} />
+        <Route path="headerLoggedIn/propertyEdit" element={<PropertyEdit />} />
+        <Route path="headerLoggedIn/propertyAdd" element={<PropertyAdd />} />
+
       </Routes>
 
       <Footer />
