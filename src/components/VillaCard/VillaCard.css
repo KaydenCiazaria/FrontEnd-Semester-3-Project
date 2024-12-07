@@ -6,17 +6,13 @@
     margin: 10px;
   }
   
+  .villa-card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Darker shadow for emphasis */
+    border-color: #007bff; /* Change border color to indicate hover */
+  }
+
   .villa-image {
     width: 100%;
     border-radius: 8px;
   }
-  
-  .reserve-button {
-    background-color: #ffd700;
-    color: black;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  

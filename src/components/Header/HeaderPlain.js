@@ -1,11 +1,9 @@
 // src/components/Header.js
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-import SearchBar from '../SearchBar/SearchBar';
-import AuthButtons from '../AuthButtons/AuthButtons';
 import './Header.css';
 
-const Header = () => {
+const HeaderPlain = () => {
   const navigate = useNavigate(); // Initialize useNavigate
 
   return (
@@ -18,10 +16,8 @@ const Header = () => {
         <img src="/path/to/logo.png" alt="VillaBooking Logo" />
         <span>VillaBooking.com</span>
       </div>
-      <SearchBar />
-      <AuthButtons />
     </div>
   );
 };
 
-export default Header;
+export default HeaderPlain;

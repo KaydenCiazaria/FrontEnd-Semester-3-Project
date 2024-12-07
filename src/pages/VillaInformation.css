@@ -1,0 +1,6 @@
+.parent-container {
+    display: flex; /* Enable Flexbox */
+    flex-direction: column; /* Stack child elements vertically */
+    width: 100vw; /* Make the container take the full width of the viewport */
+    height: 100vh; /* Make the container take the full height of the viewport */
+  }

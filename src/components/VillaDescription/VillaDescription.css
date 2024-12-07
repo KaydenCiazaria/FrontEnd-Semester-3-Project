@@ -1,0 +1,23 @@
+.villa-description-container {
+  display: grid; /* Use grid layout */
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  align-items: stretch; /* Ensure equal height for both divisions */
+  overflow: hidden; /* Prevent content overflow */
+  margin: 16px 0; /* Space around the container */
+  width: 80%; /* Set the width to 80% of the screen */
+  height: 400px; /* Fixed height for the container */
+  background-color: grey; /* White background */
+    
+}
+
+.villa-image-container {
+  width: 100%; /* Ensure the image container spans the full column */
+  height: 100%; /* Match the height of the container */
+}
+
+.villa-image {
+  width: 100%; /* Make the image responsive to the container */
+  height: 100%; /* Ensure it fills the container */
+  object-fit: cover; /* Maintain aspect ratio and crop excess */
+  border-radius: 0; /* Remove extra rounding for grid alignment */
+}

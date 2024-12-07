@@ -1,13 +1,13 @@
 import React from "react";
+import FormRegister from '../components/Form/FormRegister'; 
 
 const Register = () => {
     return (
         <div>
-            <h1>
-                GeeksforGeeks is a Computer Science portal
-                for geeks.
-            </h1>
+            <h1>Register</h1>
+            <FormRegister />
         </div>
+        
     );
 };
 

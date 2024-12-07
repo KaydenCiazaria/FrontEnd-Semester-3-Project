@@ -1,0 +1,34 @@
+/* Styling for the box-menu */
+.box-menu {
+    background-color: #f0f0f0; /* Light gray background */
+    border-radius: 12px; /* Rounded corners */
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space evenly between left and right */
+    padding: 10px 20px; /* Padding inside the box */
+    width: 80px; /* Set the width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    cursor: pointer; /* Pointer cursor on hover */
+  }
+  
+  /* Styling for the hamburger menu */
+  .hamburger {
+    font-size: 24px; /* Larger font size */
+    font-weight: bold; /* Bold lines for emphasis */
+    color: #333; /* Darker text color */
+  }
+  
+  /* Styling for the image-placeholder */
+  .image-placeholder {
+    display: flex; /* Ensures alignment if needed */
+    align-items: center; /* Center the image vertically */
+  }
+  
+  .user-image {
+    width: 40px; /* Fixed width for the user image */
+    height: 40px; /* Fixed height for the user image */
+    border-radius: 50%; /* Circle-shaped image */
+    object-fit: cover; /* Ensure the image fits properly */
+    border: 2px solid #ccc; /* Add a border for clarity */
+  }
+  

@@ -1,0 +1,22 @@
+  .form-register .switch-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .form-register .switch-label {
+    font-size: 16px;
+    margin-left: 10px;
+  }
+  
+  /* Specific Input Styling for Registration */
+  .form-register input {
+    font-size: 18px; /* Larger font size for inputs in registration */
+  }
+  
+  .form-register button {
+    background-color: #ffa500; /* Orange background for registration button */
+  }
+
+  
