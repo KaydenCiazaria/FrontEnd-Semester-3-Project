@@ -1,11 +1,61 @@
 .search-bar {
-    display: flex;
-    gap: 8px;
-  }
-  
-  .search-bar input {
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-  }
-  
+  display: flex;
+  gap: 0px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-right: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  color: black;
+}
+
+.search-bar input:last-child {
+  border-right: none;
+}
+
+.dropdown {
+  position: relative;
+  flex: 1;
+}
+
+.dropdown-header {
+  padding: 10px;
+  border: none;
+  background: white;
+  border-right: 1px solid #ccc;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  color: black; /* Ensure the text color is black */
+}
+
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%; /* Aligns dropdown below the header */
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ccc;
+  z-index: 10;
+  display: block; /* Ensures the dropdown is visible */
+}
+
+.dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.dropdown-item:hover {
+  background: #f0f0f0;
+}

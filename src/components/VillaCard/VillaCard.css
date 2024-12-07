@@ -1,18 +1,42 @@
 .villa-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px;
-    width: 250px;
-    margin: 10px;
-  }
-  
-  .villa-card:hover {
-    transform: scale(1.05); /* Slightly enlarge the card on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Darker shadow for emphasis */
-    border-color: #007bff; /* Change border color to indicate hover */
-  }
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  width: 300px; /* Increase card width */
+  margin: 20px; /* Add more space between cards */
+  display: flex; /* Ensure flexibility for image and content */
+  flex-direction: column;
+  align-items: flex-start; /* Align content to the left */
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add slight shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+}
 
-  .villa-image {
-    width: 100%;
-    border-radius: 8px;
-  }
+.villa-card:hover {
+  transform: scale(1.05); /* Slightly enlarge the card on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  border-color: #007bff; /* Highlight border */
+}
+
+.villa-image {
+  width: 100%;
+  height: 200px; /* Adjust height for consistent image size */
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.villa-details {
+  margin-top: 12px; /* Add space between image and text */
+}
+
+.villa-details h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.villa-details p {
+  margin: 4px 0;
+  color: #555;
+  font-size: 0.9rem;
+}

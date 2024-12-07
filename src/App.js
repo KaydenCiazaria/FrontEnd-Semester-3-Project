@@ -16,12 +16,11 @@ import PropertyAdd from "./pages/PropertyAdd";
 import "./App.css";
 import "./assets/css/global.css";
 
-// Custom header logic
+// Custom logic to determine which header to render
 function AppHeader() {
   const location = useLocation();
 
-  // Dynamically show NewHeader or Header
-  if (location.pathname.startsWith("/headerPlain")) { 
+  if (location.pathname.startsWith("/headerPlain")) {
     return <HeaderPlain />;
   } else if (location.pathname.startsWith("/headerLoggedIn")) {
     return <HeaderLoggedIn />;
@@ -49,7 +48,6 @@ function App() {
         <Route path="headerLoggedIn/propertySchedule" element={<PropertySchedule />} />
         <Route path="headerLoggedIn/propertyEdit" element={<PropertyEdit />} />
         <Route path="headerLoggedIn/propertyAdd" element={<PropertyAdd />} />
-
       </Routes>
 
       <Footer />
