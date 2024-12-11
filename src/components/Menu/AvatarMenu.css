@@ -1,34 +1,65 @@
-/* Styling for the box-menu */
-.box-menu {
-    background-color: #f0f0f0; /* Light gray background */
-    border-radius: 12px; /* Rounded corners */
-    display: flex; /* Flexbox for alignment */
-    align-items: center; /* Center items vertically */
-    justify-content: space-between; /* Space evenly between left and right */
-    padding: 10px 20px; /* Padding inside the box */
-    width: 80px; /* Set the width */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    cursor: pointer; /* Pointer cursor on hover */
-  }
-  
-  /* Styling for the hamburger menu */
-  .hamburger {
-    font-size: 24px; /* Larger font size */
-    font-weight: bold; /* Bold lines for emphasis */
-    color: #333; /* Darker text color */
-  }
-  
-  /* Styling for the image-placeholder */
-  .image-placeholder {
-    display: flex; /* Ensures alignment if needed */
-    align-items: center; /* Center the image vertically */
-  }
-  
-  .user-image {
-    width: 40px; /* Fixed width for the user image */
-    height: 40px; /* Fixed height for the user image */
-    border-radius: 50%; /* Circle-shaped image */
-    object-fit: cover; /* Ensure the image fits properly */
-    border: 2px solid #ccc; /* Add a border for clarity */
-  }
-  
+/* Container for the avatar menu */
+.avatar-menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Container for the hamburger and user image */
+.menu-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  gap: 10px; /* Space between the hamburger and image */
+}
+
+/* Styling for the hamburger menu icon */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 20px; /* Width of the bars */
+  height: 15px; /* Total height for three bars */
+}
+
+.bar {
+  width: 100%;
+  height: 3px; /* Thickness of each bar */
+  background-color: black;
+  border-radius: 2px; /* Rounded edges for bars */
+}
+
+/* Styling for the user image */
+.user-image img {
+  width: 40px; /* Width of the user image */
+  height: 40px; /* Height of the user image */
+  border-radius: 50%; /* Circular image */
+  object-fit: cover; /* Ensure the image fits */
+}
+
+/* Styling for the dropdown */
+.dropdown {
+  position: absolute;
+  top: 50px; /* Position below the menu */
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}

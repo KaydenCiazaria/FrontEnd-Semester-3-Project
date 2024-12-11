@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import './Form.css';
-import './FormRegister.css';
+import "./Form.css";
+import "./FormRegister.css";
 
 const FormRegister = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +12,13 @@ const FormRegister = () => {
     password: "",
   });
 
+  const handleRoleChange = (role) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      role,
+    }));
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -20,32 +27,32 @@ const FormRegister = () => {
     }));
   };
 
-  const toggleRole = () => {
-    setFormData((prevData) => ({
-      ...prevData,
-      role: prevData.role === "renter" ? "owner" : "renter",
-    }));
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevents page reload
     console.log("Form submitted:", formData);
-    // Here, you can send formData to a server using an API
+    // Here, you can send formData to the server using an API
   };
 
   return (
     <form onSubmit={handleSubmit} className="form-register">
-      <div className="switch-container">
-        <label>
-          <input
-            type="checkbox"
-            checked={formData.role === "owner"}
-            onChange={toggleRole}
-          />
-          <span className="switch-label">
-            {formData.role === "renter" ? "Renter" : "Owner"}
-          </span>
-        </label>
+      <h2>Register</h2>
+      <div className="role-container">
+        <div
+          className={`role-box ${
+            formData.role === "renter" ? "selected-role" : ""
+          }`}
+          onClick={() => handleRoleChange("renter")}
+        >
+          Renter
+        </div>
+        <div
+          className={`role-box ${
+            formData.role === "owner" ? "selected-role" : ""
+          }`}
+          onClick={() => handleRoleChange("owner")}
+        >
+          Owner
+        </div>
       </div>
       <div>
         <label>
@@ -103,7 +110,9 @@ const FormRegister = () => {
           />
         </label>
       </div>
-      <button type="submit" className="submit-button">Register</button>
+      <button type="submit" className="submit-button">
+        Register
+      </button>
     </form>
   );
 };
