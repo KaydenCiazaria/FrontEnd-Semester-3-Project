@@ -1,17 +1,52 @@
-.App {
+/* Apply full height to the body and html */
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Root container for the entire app */
+#root, .App {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100vh; /* Full viewport height */
 }
 
+/* Header styles */
 header {
   flex: 0 0 auto; /* Header takes only as much space as it needs */
+  background-color: #4CAF50; /* Example background color */
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
 }
 
+/* Main content area */
 .homepage {
-  flex: 1 1 auto; /* Homepage will expand to take up available space */
+  flex: 1 1 auto; /* Expands to fill available space */
+  padding: 20px;
+  background-color: #f9f9f9; /* Light gray background for content */
+  display: flex;
+  flex-wrap: wrap; /* Adjust cards for responsiveness */
+  justify-content: center; /* Center content horizontally */
+  gap: 16px; /* Space between elements */
 }
 
+/* Footer styles */
 footer {
   flex: 0 0 auto; /* Footer takes only as much space as it needs */
+  background-color: #333; /* Dark background for footer */
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  border-top: 1px solid #444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .homepage {
+    flex-direction: column; /* Stack content on smaller screens */
+    align-items: center;
+  }
 }
