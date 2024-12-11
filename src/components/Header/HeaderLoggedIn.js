@@ -1,7 +1,6 @@
 // src/components/Header.js
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import AvatarMenu from "../Menu/AvatarMenu";
 import "./Header.css";
@@ -16,11 +15,20 @@ const HeaderLoggedIn = ({ type }) => {
     navigate("/headerLoggedIn/notification", { state: { type: "Notification" } }); // use id later
   };
 
+  // Function to handle logo click with conditional navigation
+  const handleLogoClick = () => {
+    if (location.pathname.startsWith("/headerLoggedIn/property")) {
+      navigate("/headerLoggedIn/property", { state: { type: "My Property" } });
+    } else {
+      navigate("/headerLoggedIn/");
+    }
+  };
+
   return (
     <div className="header">
       <div
         className="logo"
-        onClick={() => navigate("headerLoggedIn/")} // Navigate to home on click
+        onClick={handleLogoClick} // Call the new function here
         style={{ cursor: "pointer" }} // Add pointer cursor to indicate clickable area
       >
         <img src={logo} alt="VillaBooking Logo" />
