@@ -15,9 +15,9 @@ const Pop_Login = ({ closeModal }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (userType === "renter") {
-      navigate("headerLoggedIn/");
+      navigate("/headerLoggedIn/");
     } else {
-      navigate("My_Property/");
+      navigate("/My_Property/");
     }
     closeModal(); // Close the modal after navigating
   };
@@ -25,6 +25,11 @@ const Pop_Login = ({ closeModal }) => {
   return (
     <div className="pop-login-overlay">
       <div className="pop-login-container">
+        <button className="close-button" onClick={closeModal}>
+          X
+        </button>
+        <h2>Log In to unlock more features!</h2>
+        <p>Who Are You?</p>
         <div className="user-type-selection">
           <button
             className={`user-type-button ${
@@ -32,7 +37,7 @@ const Pop_Login = ({ closeModal }) => {
             }`}
             onClick={() => handleUserTypeChange("renter")}
           >
-            Renter
+            Look for a villa
           </button>
           <button
             className={`user-type-button ${
@@ -40,12 +45,12 @@ const Pop_Login = ({ closeModal }) => {
             }`}
             onClick={() => handleUserTypeChange("owner")}
           >
-            Owner
+            Rent out my villa
           </button>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Email</label>
+            <label>Email:</label>
             <input
               type="email"
               value={email}
@@ -54,7 +59,7 @@ const Pop_Login = ({ closeModal }) => {
             />
           </div>
           <div className="form-group">
-            <label>Password</label>
+            <label>Password:</label>
             <input
               type="password"
               value={password}
@@ -63,12 +68,21 @@ const Pop_Login = ({ closeModal }) => {
             />
           </div>
           <button type="submit" className="login-submit-button">
-            Submit
+            Enter
           </button>
         </form>
-        <button className="close-button" onClick={closeModal}>
-          X
-        </button>
+        <p className="register-text">
+          Don't have an account?{" "}
+          <span
+            className="register-link"
+            onClick={() => {
+              closeModal();
+              navigate("headerPlain/register");
+            }}
+          >
+            Register Here
+          </span>
+        </p>
       </div>
     </div>
   );
