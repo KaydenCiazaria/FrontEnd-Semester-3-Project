@@ -2,6 +2,7 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 import './Header.css';
+import logo from '../../assets/images/logo.png';
 
 const HeaderPlain = () => {
   const navigate = useNavigate(); // Initialize useNavigate
@@ -13,7 +14,7 @@ const HeaderPlain = () => {
         onClick={() => navigate("/")} // Navigate to home on click
         style={{ cursor: "pointer" }} // Add pointer cursor to indicate clickable area
       >
-        <img src="/path/to/logo.png" alt="VillaBooking Logo" />
+        <img src={logo} alt="VillaBooking Logo" />
         <span>VillaBooking.com</span>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import AvatarMenu from "../Menu/AvatarMenu";
 import "./Header.css";
+import logo from '../../assets/images/logo.png';
 
 const HeaderLoggedIn = ({ type }) => {
   const navigate = useNavigate(); // Initialize useNavigate
@@ -22,7 +23,7 @@ const HeaderLoggedIn = ({ type }) => {
         onClick={() => navigate("headerLoggedIn/")} // Navigate to home on click
         style={{ cursor: "pointer" }} // Add pointer cursor to indicate clickable area
       >
-        <img src="/path/to/logo.png" alt="VillaBooking Logo" />
+        <img src={logo} alt="VillaBooking Logo" />
         <span>VillaBooking.com</span>
       </div>
       {typeName ? (

@@ -1,13 +1,30 @@
-.home {
-    display: flex;
-    height: 70%;
-    flex: 1;
+.villa-card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 items per row on large screens */
+  gap: 16px;
+  padding: 20px;
+  justify-items: center;
 }
 
-.villa-container {
-  display: flex;
-  flex-wrap: wrap;
-  overflow-y: scroll;
-  height: 70vh;
+@media (max-width: 1200px) {
+  .villa-card-grid {
+      grid-template-columns: repeat(3, 1fr); /* 3 items per row for medium screens */
+  }
+}
+
+@media (max-width: 900px) {
+  .villa-card-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 items per row for smaller screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .villa-card-grid {
+      grid-template-columns: 1fr; /* 1 item per row on mobile */
+  }
+}
+
+.home-container {
+  text-align: center;
   padding: 20px;
 }
