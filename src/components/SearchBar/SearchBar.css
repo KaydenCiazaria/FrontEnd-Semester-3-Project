@@ -1,43 +1,35 @@
 .search-bar {
   display: flex;
-  gap: 0px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  overflow: hidden;
-  max-width: 600px;
+  gap: 10px; /* Adds spacing between the boxes */
+  max-width: 100%;
   margin: 0 auto;
 }
 
-.search-bar input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-right: 1px solid #ccc;
-  font-size: 14px;
-  outline: none;
-  color: black;
-}
-
-.search-bar input:last-child {
-  border-right: none;
-}
-
-.dropdown {
+.dropdown-box {
   position: relative;
   flex: 1;
+  max-width: 300px; /* Adjusted width of the dropdown box */
+  min-width: 150px; /* Ensures the box doesn't shrink too much */
 }
 
 .dropdown-header {
   padding: 10px;
-  border: none;
+  border: 1px solid #ccc;
   background: white;
-  border-right: 1px solid #ccc;
   font-size: 14px;
   text-align: center;
   cursor: pointer;
-  color: black; /* Ensure the text color is black */
+  border-radius: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: black;
+  width: 100%; /* Make sure the header takes up full width */
+  height: 40px; /* Fixed height for all dropdowns */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 
 .dropdown-menu {
   position: absolute;
@@ -47,15 +39,53 @@
   background: white;
   border: 1px solid #ccc;
   z-index: 10;
-  display: block; /* Ensures the dropdown is visible */
+  width: 100%; /* Ensure the dropdown takes the full width */
 }
 
 .dropdown-item {
   padding: 10px;
-  cursor: pointer;
   text-align: center;
+  cursor: pointer;
+  color: black; /* Set text color to black for dropdown items */
 }
 
 .dropdown-item:hover {
   background: #f0f0f0;
+}
+
+.date-picker-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+  text-align: center;
+  cursor: pointer;
+  background: white;
+  color: black; /* Set text color to black */
+}
+
+/* Ensure the calendar dropdown stays within the box */
+.react-datepicker__calendar {
+  width: 100% !important;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: white;
+  max-height: 400px; /* Limit calendar height */
+  overflow: auto; /* Allow scrolling */
+}
+
+/* Prevent the calendar from resizing the date picker header */
+.react-datepicker__input-container {
+  width: 100% !important;
+  display: flex;
+  justify-content: center;
+}
+
+.react-datepicker__header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px; /* Set a fixed height to prevent resizing */
 }

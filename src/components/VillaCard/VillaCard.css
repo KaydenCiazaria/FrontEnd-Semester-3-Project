@@ -1,42 +1,55 @@
 .villa-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 16px;
-  width: 300px; /* Increase card width */
-  margin: 20px; /* Add more space between cards */
-  display: flex; /* Ensure flexibility for image and content */
-  flex-direction: column;
-  align-items: flex-start; /* Align content to the left */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add slight shadow */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+  max-width: 300px; /* Optional: Limit card width */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 }
 
 .villa-card:hover {
-  transform: scale(1.05); /* Slightly enlarge the card on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-  border-color: #007bff; /* Highlight border */
+  transform: translateY(-5px); /* Subtle lift effect on hover */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .villa-image {
   width: 100%;
-  height: 200px; /* Adjust height for consistent image size */
+  height: 200px;
   object-fit: cover;
-  border-radius: 8px;
 }
 
 .villa-details {
-  margin-top: 12px; /* Add space between image and text */
+  padding: 15px;
+  text-align: left;
 }
 
-.villa-details h3 {
-  margin: 0;
-  font-size: 1.2rem;
+.villa-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
   color: #333;
 }
 
-.villa-details p {
-  margin: 4px 0;
+.villa-price,
+.villa-rating,
+.villa-address,
+.villa-tags {
+  font-size: 14px;
+  margin-bottom: 5px;
   color: #555;
-  font-size: 0.9rem;
+}
+
+.villa-tags {
+  font-style: italic;
+  color: #777;
+}
+
+.villa-card:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
 }

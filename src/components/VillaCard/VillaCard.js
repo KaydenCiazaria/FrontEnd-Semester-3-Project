@@ -7,12 +7,12 @@ const VillaCard = ({ villa }) => {
   const location = useLocation();
 
   const handleNavigation = () => {
-    // Check if the current URL contains "headerLoggedIn"
-    if (location.pathname.startsWith("/headerLoggedIn")) {
-      navigate("/headerLoggedIn/villaInformation", { state: { villa } }); // Navigate to the specific path
-    } else {
-      navigate("/VillaInformation", { state: { villa } }); // Default navigation
-    }
+    // Determine the navigation path based on current location
+    const basePath = location.pathname.startsWith("/headerLoggedIn")
+      ? "/headerLoggedIn/villaInformation"
+      : "/VillaInformation";
+
+    navigate(basePath, { state: { villa } });
   };
 
   return (
@@ -20,14 +20,19 @@ const VillaCard = ({ villa }) => {
       className="villa-card"
       onClick={handleNavigation}
       style={{ cursor: "pointer" }}
+      aria-label={`View details for ${villa.title}`}
     >
-      <img src={villa.image} alt={`${villa.title} Image`} className="villa-image" />
+      <img 
+        src={villa.image} 
+        alt={`${villa.title} Image`} 
+        className="villa-image" 
+      />
       <div className="villa-details">
-        <h3>{villa.title}</h3>
-        <p>Price: {villa.price}</p>
-        <p>Rating: {villa.rating} ⭐</p>
-        <p>Address: {villa.address}</p>
-        <p>Tags: {villa.tags.join(", ")}</p>
+        <h3 className="villa-title">{villa.title}</h3>
+        <p className="villa-price">Price: {villa.price}</p>
+        <p className="villa-rating">Rating: {villa.rating} ⭐</p>
+        <p className="villa-address">Address: {villa.address}</p>
+        <p className="villa-tags">Tags: {villa.tags.join(", ")}</p>
       </div>
     </div>
   );
