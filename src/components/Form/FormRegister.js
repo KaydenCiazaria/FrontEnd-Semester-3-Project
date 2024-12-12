@@ -27,10 +27,44 @@ const FormRegister = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); // Prevents page reload
-    console.log("Form submitted:", formData);
-    // Here, you can send formData to the server using an API
+
+    var endpoint = "";
+
+    if (formData.role === "renter") {
+      endpoint = "http://localhost:8080/api/users/register";
+    } else {
+      endpoint = "http://localhost:8080/api/villa_owner/register";
+    }
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          phone_num: formData.phone,
+          password: formData.password
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error("Error occurred while submitting form");
+      }
+
+      const result = await response.json();
+      console.log("Form submitted successfully", result);
+    }
+
+    catch (error) {
+      console.error("An error occurred while sending form data: ", error)
+    }
+    
   };
 
   return (
@@ -82,7 +116,7 @@ const FormRegister = () => {
           <input
             type="tel"
             name="phone"
-            value={formData.phone}
+            value={formData.phone_num}
             onChange={handleChange}
             required
           />
