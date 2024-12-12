@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import "./Pop_Login.css";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "./Pop_Login.css";
 
 const Pop_Login = ({ closeModal }) => {
   const [userType, setUserType] = useState("renter"); // Default to renter
@@ -12,14 +13,36 @@ const Pop_Login = ({ closeModal }) => {
     setUserType(type);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (userType === "renter") {
-      navigate("/headerLoggedIn/");
-    } else {
-      navigate("/My_Property/");
+    const endpoint =
+      userType === "renter"
+        ? "http://localhost:8080/api/users/auth/login"
+        : "http://localhost:8080/api/villa_owner/auth/login";
+
+    try {
+      const response = await axios.post(endpoint, { email, password });
+      const { token } = response.data; // Assuming the JWT token is in the `token` field
+      if (!token || token.trim() === "") {
+        // If token is missing or empty, alert an error
+        alert("Login failed: Token is missing from the response.");
+        return;
+      }
+      // Store token in a cookie
+      localStorage.setItem("jwtToken", token);
+
+      // Navigate to the appropriate page
+      if (userType === "renter") {
+        navigate("/headerLoggedIn/");
+      } else {
+        navigate("/My_Property/");
+      }
+
+      closeModal(); // Close the modal
+    } catch (error) {
+      console.error("Login failed:", error.response?.data || error.message);
+      alert("Failed to log in. Please check your credentials.");
     }
-    closeModal(); // Close the modal after navigating
   };
 
   return (
