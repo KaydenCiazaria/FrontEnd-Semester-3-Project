@@ -1,22 +1,28 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AvatarMenu.css";
+import Pop_Logout from ".././Pop_Ups/Pop_Logout/Pop_Logout"; // Import the Pop_Logout component
 
 const AvatarMenu = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // State for dropdown
+  const [showLogoutModal, setShowLogoutModal] = useState(false); // State for logout modal
   const navigate = useNavigate();
 
   const handleMenuClick = () => {
     setIsOpen(!isOpen); // Toggle the dropdown
   };
 
-  const handleLogout = () => {
-    alert("You've logged out."); // Display logout alert
-    navigate("/"); // Navigate to the homepage
+  const handleLogoutClick = () => {
+    setShowLogoutModal(true); // Show the Pop_Logout modal
+  };
+
+  const closeLogoutModal = () => {
+    setShowLogoutModal(false); // Close the Pop_Logout modal
   };
 
   return (
     <div className="avatar-menu">
+      {/* Avatar + Menu */}
       <div className="menu-container" onClick={handleMenuClick}>
         <div className="hamburger">
           <div className="bar"></div>
@@ -30,13 +36,18 @@ const AvatarMenu = () => {
           />
         </div>
       </div>
+
+      {/* Dropdown */}
       {isOpen && (
         <div className="dropdown">
-          <div className="dropdown-item" onClick={handleLogout}>
+          <div className="dropdown-item" onClick={handleLogoutClick}>
             Log out
           </div>
         </div>
       )}
+
+      {/* Pop_Logout */}
+      {showLogoutModal && <Pop_Logout closeModal={closeLogoutModal} />}
     </div>
   );
 };
