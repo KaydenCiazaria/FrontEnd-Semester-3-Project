@@ -1,7 +1,1 @@
-Navigation to: (add state: type)
-PropertySchedule page
-EditProperty page
-AddProperty page
-
-How to separate renter account and owner?
-Notification for Renter.
+pop-up elements, extending element, calender, and owner side pages.
