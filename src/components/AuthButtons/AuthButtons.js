@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./AuthButtons.css";
-import Pop_Login from "../Pop_Login/Pop_Login"; // Import the Pop_Login component
+import Pop_Login from ".././Pop_Ups/Pop_Login/Pop_Login"; // Import the Pop_Login component
 
 const AuthButtons = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false); // State to handle modal visibility

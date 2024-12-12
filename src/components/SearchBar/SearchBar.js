@@ -42,6 +42,7 @@ const SearchBar = ({ onSearch }) => {
         city: selectedCity !== "Where?" ? selectedCity : null,
         people: selectedPeople !== "People" ? selectedPeople : null,
         startDate: startDate ? startDate.toISOString() : null,
+        endDate: endDate ? endDate.toISOString() : null,
       };
       onSearch(searchParams); // Pass parameters to the parent or backend
     }
