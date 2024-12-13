@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PopRate from ".././Pop_Ups/PopRate";
-import PopVerification from ".././Pop_Ups/PopVerification";
+import PopRate from ".././PopUps/PopRate/PopRate";
+import PopVerification from ".././PopUps/PopVerification/PopVerification";
 import "./NotificationCard.css";
 
 const NotificationCard = ({ villa }) => {
@@ -52,7 +52,7 @@ const NotificationCard = ({ villa }) => {
         onClick={
           villa.type === "villa-approval" || villa.type === "villa-rate"
             ? handleOpenModal
-            : () => navigate("/headerLoggedIn/reservationDetails", { state: { villa, type: "Reservation Details" } })
+            : () => navigate("/headerLoggedIn/reservationDetail", { state: { villa, type: "Reservation Detail" } })
         }
       >
         {getButtonText()}
