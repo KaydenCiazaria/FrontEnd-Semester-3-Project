@@ -1,26 +1,47 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import VillaCard from '../components/VillaCard/VillaCard';
 
-const villas = [
-    {
-      image: '.././villa-image.png',
-      title: 'Beauvida Villa',
-      price: 'Rp. 200.000/Night',
-      rating: '4/5',
-      address: 'Jl. Prasopaca Raya no.20, Kebayoran Baru, Jakarta Selatan',
-      tags: ['Swimming Pool', '3 bedrooms', '2 toilets', 'BBQ']
-    },
-    // Add more villa objects as needed
-  ];
+const LoggedInHome = () => {
 
-  const LoggedInHome = () => {
-    return (
-        <div className="villa-container">
+  const [villas, setVillas] = useState([]);
+
+  useEffect(() => {
+
+    const fetchVillas = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/api/villa/show_villa');
+        const data = await response.json();
+
+        const transformedVillas = data.map(villa => ({
+          image: "",
+          title: villa.villa_name,
+          price: `${villa.price}/Night`,
+          rating: `${villa.review_rating}/5`,
+          address: villa.address,
+          tags: ['Good facilities']
+        }));
+        setVillas(transformedVillas);
+      } catch (error) {
+        console.error('Error fetching villa data: ', error);
+      }
+    };
+
+    fetchVillas();
+  }, [])
+
+  return (
+    <div className="home-container">
+      <h1>Welcome to Villa Rentals</h1>
+      <p>Explore our luxurious villa options and find the perfect place to stay.</p>
+
+      <div className="villa-card-grid"> {/* Grid layout for the villa cards */}
         {villas.map((currentVilla, index) => (
           <VillaCard key={index} villa={currentVilla} />
         ))}
       </div>
-    );
-  };
+    </div>
+  );
+};
   
   export default LoggedInHome;
