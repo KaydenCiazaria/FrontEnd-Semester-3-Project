@@ -5,6 +5,7 @@ import HeaderPlain from "./components/Header/HeaderPlain";
 import HeaderLoggedIn from "./components/Header/HeaderLoggedIn";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
+import LoggedInHome from "./pages/LoggedInHome";
 import Register from "./pages/Register";
 import VillaInformation from "./pages/VillaInformation/VillaInformation";
 import Notification from "./pages/Notification/Notification";
@@ -36,9 +37,9 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/headerLoggedIn/" element={<Home />} />
+        <Route path="/headerLoggedIn/" element={<LoggedInHome />} />
         <Route path="/headerPlain/register" element={<Register />} />
-        <Route path="/headerPlain/reservationDetail" element={<ReservationDetail />} />
+        <Route path="/headerLoggedIn/reservationDetail" element={<ReservationDetail />} />
         
         <Route path="/headerLoggedIn/notification" element={<Notification />} />
         <Route path="/VillaInformation" element={<VillaInformation />} />

@@ -1,0 +1,74 @@
+.reservation-detail-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f7f7f7; /* Light background color */
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  .reservation-detail-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px; /* Restrict width for better visuals */
+    background: white;
+    border-radius: 10px;
+    border: 2px solid darkgrey; /* Add a black border */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for a card effect */
+    overflow: hidden; /* Round edges for images */
+  }
+  
+  
+  .villa-image-container {
+    width: 100%;
+    height: 200px; /* Adjust the height of the image container */
+    overflow: hidden; /* Ensure no overflow of image */
+  }
+  
+  .villa-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the container nicely */
+  }
+  
+  .villa-info-container {
+    display: flex;
+    justify-content: space-between; /* Distribute space between the left and right sections */
+    width: 100%;
+  }
+  
+  .villa-info-left {
+    width: 60%; /* Left section takes 60% of the container width */
+    padding: 20px;
+  }
+  
+  .villa-info-right {
+    width: 40%; /* Right section takes the remaining 40% */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center-align the content horizontally */
+    justify-content: center; /* Center-align the content vertically */
+  }
+  
+  .villa-info-right p {
+    margin-bottom: 10px; /* Add spacing between the text and the button */
+  }
+  
+  .villa-info-right button {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .villa-info-right button:hover {
+    background-color: #0056b3; /* Slightly darker shade on hover */
+  }
+  
+  
