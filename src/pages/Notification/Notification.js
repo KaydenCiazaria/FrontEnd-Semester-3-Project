@@ -1,5 +1,5 @@
 import React from "react";
-import NotificationCard from '../components/NotificationCard/NotificationCard';
+import NotificationCard from '../../components/NotificationCard/NotificationCard';
 import "./Notification.css";
 
 const villas = [

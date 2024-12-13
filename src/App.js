@@ -4,11 +4,11 @@ import Header from "./components/Header/Header";
 import HeaderPlain from "./components/Header/HeaderPlain";
 import HeaderLoggedIn from "./components/Header/HeaderLoggedIn";
 import Footer from "./components/Footer/Footer";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import Register from "./pages/Register";
-import VillaInformation from "./pages/VillaInformation";
-import Notification from "./pages/Notification";
-import ReservationDetails from "./pages/ReservationDetails";
+import VillaInformation from "./pages/VillaInformation/VillaInformation";
+import Notification from "./pages/Notification/Notification";
+import ReservationDetail from "./pages/ReservationDetail/ReservationDetail";
 import Property from "./pages/Property";
 import PropertySchedule from "./pages/PropertySchedule";
 import PropertyEdit from "./pages/PropertyEdit";
@@ -38,7 +38,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/headerLoggedIn/" element={<Home />} />
         <Route path="/headerPlain/register" element={<Register />} />
-        <Route path="/headerPlain/reservationDetails" element={<ReservationDetails />} />
+        <Route path="/headerPlain/reservationDetail" element={<ReservationDetail />} />
         
         <Route path="/headerLoggedIn/notification" element={<Notification />} />
         <Route path="/VillaInformation" element={<VillaInformation />} />

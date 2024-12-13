@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import VillaCard from '../components/VillaCard/VillaCard';
+import VillaCard from '../../components/VillaCard/VillaCard';
 import './Home.css'; // Ensure this file contains styling for the grid
 
 const Home = () => {

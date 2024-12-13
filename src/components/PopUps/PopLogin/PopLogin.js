@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import "./Pop_Login.css";
+import "./PopLogin.css";
 
-const Pop_Login = ({ closeModal }) => {
+const PopLogin = ({ closeModal }) => {
   const [userType, setUserType] = useState("renter"); // Default to renter
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -111,4 +111,4 @@ const Pop_Login = ({ closeModal }) => {
   );
 };
 
-export default Pop_Login;
+export default PopLogin;
