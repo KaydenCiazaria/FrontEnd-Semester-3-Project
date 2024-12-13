@@ -1,0 +1,26 @@
+/* Style for horizontal scrolling */
+.properties-container {
+    display: flex;
+    justify-content: center; /* Centers the properties horizontally */
+    align-items: center; /* Vertically aligns items in the middle if necessary */
+    overflow-x: auto; /* Allows horizontal scrolling */
+    white-space: nowrap;
+    gap: 10px; /* Space between each property */
+    padding: 10px;
+  }  
+  
+  /* Each property card */
+  .property-item {
+    flex: 0 0 auto;
+    width: 400px;
+    height: 300px;
+    background: #f0f0f0; /* Example background */
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
