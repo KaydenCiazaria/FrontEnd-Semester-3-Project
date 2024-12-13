@@ -1,6 +1,5 @@
 import React from 'react';
 import VillaCard from '../components/VillaCard/VillaCard';
-import './Home.css';
 
 const villas = [
     {
@@ -14,7 +13,7 @@ const villas = [
     // Add more villa objects as needed
   ];
 
-  const Home = () => {
+  const LoggedInHome = () => {
     return (
         <div className="villa-container">
         {villas.map((currentVilla, index) => (
@@ -24,4 +23,4 @@ const villas = [
     );
   };
   
-  export default Home;
+  export default LoggedInHome;
