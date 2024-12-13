@@ -10,7 +10,7 @@ import Register from "./pages/Register";
 import VillaInformation from "./pages/VillaInformation/VillaInformation";
 import Notification from "./pages/Notification/Notification";
 import ReservationDetail from "./pages/ReservationDetail/ReservationDetail";
-import Property from "./pages/Property";
+import Property from "./pages/Property/Property";
 import PropertySchedule from "./pages/PropertySchedule";
 import PropertyEdit from "./pages/PropertyEdit";
 import PropertyAdd from "./pages/PropertyAdd";
