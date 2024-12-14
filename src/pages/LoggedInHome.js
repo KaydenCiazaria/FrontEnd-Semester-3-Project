@@ -14,6 +14,7 @@ const LoggedInHome = () => {
         const data = await response.json();
 
         const transformedVillas = data.map(villa => ({
+          id: villa.id,
           image: "",
           title: villa.villa_name,
           price: `${villa.price}/Night`,
