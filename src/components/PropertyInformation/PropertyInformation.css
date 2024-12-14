@@ -11,24 +11,34 @@
   border-radius: 8px;
   background-color: #fafafa;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative; /* For absolute positioning of the buttons */
 }
 
 /* Style for the property details */
 .property-info-container {
   padding: 15px;
   text-align: left;
+  width: 70%; /* Take 70% of the container width */
+  color: black; /* Explicitly set text color to black */
+}
+
+/* Style for all text elements inside the property-info-container */
+.property-info-container h2, 
+.property-info-container p {
+  color: black; /* Ensure all text is black */
 }
 
 /* Button container wrapping the action buttons */
 .buttons-container {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
   gap: 10px;
-  flex-wrap: wrap;
-  max-width: 100%;
-  padding: 10px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10;
 }
 
 /* Style for each button */
@@ -36,10 +46,32 @@
   padding: 12px 20px;
   font-size: 16px;
   border: none;
-  background-color: #007bff;
-  color: white;
+  background-color: #EAED4C; /* Change button color to EAED4C */
+  color: black; /* Set button text color to black */
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.info-button:hover {
+  background-color: #d3d94a;
+}
+
+/* Add New Property button at top-right */
+.add-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+/* Edit button */
+.edit-button {
+  background-color: #EAED4C;
+}
+
+/* Schedule button */
+.schedule-button {
+  background-color: #EAED4C;
 }

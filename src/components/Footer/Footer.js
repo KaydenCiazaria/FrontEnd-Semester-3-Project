@@ -20,7 +20,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-copyright">
-        <p>© [Year] VillaBooking. All rights reserved. Unauthorized use or reproduction of content is strictly prohibited.</p>
+        <p>© {new Date().getFullYear()} VillaBooking. All rights reserved. Unauthorized use or reproduction of content is strictly prohibited.</p>
       </div>
     </footer>
   );

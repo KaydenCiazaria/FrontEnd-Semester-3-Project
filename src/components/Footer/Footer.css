@@ -1,26 +1,38 @@
+/* Footer.css */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
 .footer {
-    background-color: green;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    
-  }
-  
-  .footer-content {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 10px;
-  }
-  
-  .contact-info, .location-info {
-    max-width: 45%;
-  }
-  
-  .footer p {
-    margin: 5px 0;
-  }
-  
-  .footer-content p, .footer-content strong {
-    text-align: left;
-  }
-  
+  background-color: green;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.contact-info, .location-info {
+  max-width: 45%;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+.footer-content p, .footer-content strong {
+  text-align: left;
+}
