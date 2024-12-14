@@ -4,7 +4,7 @@ import PopRate from ".././PopUps/PopRate/PopRate";
 import PopVerification from ".././PopUps/PopVerification/PopVerification";
 import "./NotificationCard.css";
 
-const NotificationCard = ({ reservation }) => {
+const NotificationCard = ({ villa }) => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -20,9 +20,9 @@ const NotificationCard = ({ reservation }) => {
 
   // Function to determine the modal component
   const renderModal = () => {
-    if (reservation.type === "villa-approval") {
+    if (villa.type === "villa-approval") {
       return <PopVerification closeModal={closeModal} />;
-    } else if (reservation.type === "villa-rate") {
+    } else if (villa.type === "villa-rate") {
       return <PopRate closeModal={closeModal} />;
     }
     return null; // No modal for other types
@@ -30,40 +30,40 @@ const NotificationCard = ({ reservation }) => {
 
   // Function to handle button actions
   const buttonFunction = () => {
-    if (reservation.type === "villa-approval" || reservation.type === "villa-rate") {
+    if (villa.type === "villa-approval" || villa.type === "villa-rate") {
       handleOpenModal();
     } else {
       navigate("/headerLoggedIn/reservationDetail", {
-        state: { reservation, type: "Reservation Detail" },
+        state: { villa, type: "Reservation Detail" },
       });
     }
   };
 
   // Function to determine card content
   const renderContent = () => {
-    if (reservation.type === "reserved-villas") {
+    if (villa.type === "reserved-villas") {
       return (
         <>
-          <h3>{reservation.title}</h3>
-          <p>Price: {reservation.price}</p>
-          <p>Address: {reservation.address}</p>
-          <p>Reserved Dates: {reservation.date}</p>
+          <h3>{villa.title}</h3>
+          <p>Price: {villa.price}</p>
+          <p>Address: {villa.address}</p>
+          <p>Reserved Dates: {villa.date}</p>
           <button onClick={buttonFunction}>More Information!</button>
         </>
       );
-    } else if (reservation.type === "villa-approval") {
+    } else if (villa.type === "villa-approval") {
       return (
         <>
-          <h3>{reservation.title}</h3>
-          <p>{reservation.title} has been reserved.</p>
+          <h3>{villa.title}</h3>
+          <p>{villa.title} has been reserved.</p>
           <button onClick={buttonFunction}>Approve Reservation</button>
         </>
       );
-    } else if (reservation.type === "villa-rate") {
+    } else if (villa.type === "villa-rate") {
       return (
         <>
-          <h3>{reservation.title}</h3>
-          <p>Rate {reservation.title} to share your experience.</p>
+          <h3>{villa.title}</h3>
+          <p>Rate {villa.title} to share your experience.</p>
           <button onClick={buttonFunction}>Rate Now</button>
         </>
       );
