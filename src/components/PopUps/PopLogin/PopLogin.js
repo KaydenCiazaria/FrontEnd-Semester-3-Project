@@ -35,7 +35,7 @@ const PopLogin = ({ closeModal }) => {
       if (userType === "renter") {
         navigate("/headerLoggedIn/");
       } else {
-        navigate("headerLoggedIn/property");
+        navigate("headerLoggedIn/property", { state: { type: "Property" } });
       }
 
       closeModal(); // Close the modal
