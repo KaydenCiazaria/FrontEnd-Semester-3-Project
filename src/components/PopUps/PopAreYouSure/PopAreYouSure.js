@@ -1,8 +1,8 @@
 import React from "react";
-import "./PopLogout.css";
+import "./PopAreYouSure.css";
 import { useNavigate } from "react-router-dom";
 
-const PopLogout = ({ closeModal }) => {
+const PopAreYourSure = ({ closeModal }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -30,4 +30,4 @@ const PopLogout = ({ closeModal }) => {
   );
 };
 
-export default PopLogout;
+export default PopAreYourSure;
