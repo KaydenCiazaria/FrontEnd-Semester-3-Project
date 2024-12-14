@@ -2,7 +2,7 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
-import AvatarMenu from "../Menu/AvatarMenu";
+import AvatarMenu from "../BurgerMenu/AvatarMenu";
 import "./Header.css";
 import logo from '../../assets/images/logo.png';
 
