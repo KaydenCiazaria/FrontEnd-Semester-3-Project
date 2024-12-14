@@ -1,0 +1,52 @@
+/* Universal Form Container Styling */
+form {
+    background-color: #f9f9f9; /* Light gray background */
+    padding: 20px;
+    border: 1px solid #ccc; /* Border for the form */
+    border-radius: 8px; /* Rounded corners for the form */
+    max-width: 500px; /* Default width */
+    margin: 20px auto; /* Center the form horizontally */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+  }
+  
+  /* Input, Textarea, and File Input Styling */
+  form label {
+    display: block; /* Ensure labels are on separate lines */
+    margin-bottom: 8px; /* Space between label and input */
+    font-weight: bold; /* Make labels bold */
+  }
+  
+  form input {
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Add padding inside the inputs */
+    margin-bottom: 16px; /* Space between inputs */
+    border: 1px solid #ccc; /* Border around inputs */
+    border-radius: 4px; /* Rounded corners for inputs */
+    font-size: 16px; /* Increase font size */
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+  
+  form input[type="file"] {
+    padding: 4px; /* Smaller padding for file input */
+  }
+  
+  form button {
+    background-color: #ffcc00; /* Yellow background */
+    color: #333; /* Dark text for contrast */
+    padding: 12px 20px; /* Add padding to the button */
+    border: none; /* Remove border */
+    border-radius: 20px; /* Fully rounded corners */
+    font-size: 16px; /* Increase font size */
+    cursor: pointer; /* Add pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  form button:hover {
+    background-color: #ffb900; /* Slightly darker yellow on hover */
+  }
+  
+  /* Universal Additional Div Styling */
+  form div {
+    margin-bottom: 20px; /* Space between sections of the form */
+  }
+  

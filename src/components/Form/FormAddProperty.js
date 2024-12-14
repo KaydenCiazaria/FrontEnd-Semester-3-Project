@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import "./Form.css";
 
-const FormReservation = () => {
+const FormAddProperty = () => {
   const [formData, setFormData] = useState({
     villaName: "",
+    price: "",
     address: "",
-    facilities: "",
-    description: "",
+    tags: "",
+    photo: null, // Photo file
   });
 
   const handleChange = (e) => {
@@ -17,10 +18,18 @@ const FormReservation = () => {
     }));
   };
 
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    setFormData((prevData) => ({
+      ...prevData,
+      photo: file,
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevents page reload
     console.log("Form submitted:", formData);
-    // Here, you can send formData to a server using an API
+    // You can process the data here, such as sending it to a server
   };
 
   return (
@@ -32,9 +41,22 @@ const FormReservation = () => {
             Villa Name:
             <input
               type="text"
-              name="name"
+              name="villaName"
               value={formData.villaName}
               onChange={handleChange}
+              placeholder="Enter the villa name"
+              required
+            />
+          </label>
+          <label>
+            Price (per night):
+            <input
+              type="number"
+              name="price"
+              value={formData.price}
+              onChange={handleChange}
+              placeholder="Enter the price per night"
+              required
             />
           </label>
           <label>
@@ -44,26 +66,32 @@ const FormReservation = () => {
               name="address"
               value={formData.address}
               onChange={handleChange}
+              placeholder="Enter the villa address"
+              required
             />
           </label>
         </div>
         <div>
           <label>
-            facilities:
-            <textarea
-              name="facilities"
-              value={formData.facilities}
+            Tags (comma-separated):
+            <input
+              type="text"
+              name="tags"
+              value={formData.tags}
               onChange={handleChange}
+              placeholder="e.g., beach, luxury, family"
             />
           </label>
         </div>
         <div>
           <label>
-            Description:
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
+            Photo:
+            <input
+              type="file"
+              name="photo"
+              onChange={handlePhotoChange}
+              accept="image/*"
+              required
             />
           </label>
         </div>
@@ -73,4 +101,4 @@ const FormReservation = () => {
   );
 };
 
-export default FormReservation;
+export default FormAddProperty;
