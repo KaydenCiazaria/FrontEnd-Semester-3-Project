@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AvatarMenu.css";
-import Pop_Logout from ".././Pop_Ups/Pop_Logout/Pop_Logout"; // Import the Pop_Logout component
+import Pop_Logout from ".././PopUps/PopLogout/PopLogout"; // Import the Pop_Logout component
 
 const AvatarMenu = () => {
   const [isOpen, setIsOpen] = useState(false); // State for dropdown
