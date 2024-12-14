@@ -1,9 +1,10 @@
 import React from 'react';
+import FormAddProperty from '.././components/Form/FormAddProperty';
 
   const PropertyAdd = () => {
     return (
         <div>
-            Property Add
+            <FormAddProperty />
         </div>
     );
   };
