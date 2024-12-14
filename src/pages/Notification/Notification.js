@@ -91,28 +91,6 @@ const Notification = () => {
 
   return (
     <div className="notification-background">
-      <div className="user-type-placeholder">
-        <label>
-          <input
-            type="radio"
-            name="userType"
-            value="renter"
-            checked={userType === "renter"}
-            onChange={handleUserTypeChange}
-          />
-          Renter
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="userType"
-            value="owner"
-            checked={userType === "owner"}
-            onChange={handleUserTypeChange}
-          />
-          Owner
-        </label>
-      </div>
       <div className="content-box">
         {villas && villas.length > 0 ? (
           villas.map((villa, index) => (
