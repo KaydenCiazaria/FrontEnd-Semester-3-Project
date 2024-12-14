@@ -21,7 +21,7 @@ const Header = () => {
       <SearchBar />
       <div
         className="list-your-properties"
-        onClick={() => navigate("headerLoggedIn/property", {state: { type: "My Property" } })}
+        onClick={() => navigate("/headerPlain/register")}
         style={{cursor: "pointer"}}
       >
         List your Properties?
