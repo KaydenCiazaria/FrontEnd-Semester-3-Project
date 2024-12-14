@@ -2,7 +2,7 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
-import AvatarMenu from "../Menu/AvatarMenu";
+import AvatarMenu from "../BurgerMenu/AvatarMenu";
 import "./Header.css";
 import logo from '../../assets/images/logo.png';
 
@@ -12,7 +12,11 @@ const HeaderLoggedIn = ({ type }) => {
   const typeName = location.state?.type || "";
 
   const handleInformation = () => {
-    navigate("/headerLoggedIn/notification", { state: { type: "Notification" } }); // use id later
+    if (location.pathname.startsWith("/headerLoggedIn/property")) {
+      navigate("/headerLoggedIn/notificationOwner", { state: { type: "Notification" } });
+    } else {
+      navigate("/headerLoggedIn/notificationRenter", { state: { type: "Notification" } }); // use id later
+    }
   };
 
   // Function to handle logo click with conditional navigation

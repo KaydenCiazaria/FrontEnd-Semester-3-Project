@@ -1,62 +1,130 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import PropertyList from '../../components/PropertyList/PropertyList';
+import axios from "axios";
 import PropertyInformation from '../../components/PropertyInformation/PropertyInformation';
 import './Property.css';
-
-const properties = [
-  {
-    date: '5 December - 10 December 2024',
-    image: 'image-path',
-    title: 'Beauvida Villa',
-    price: 'Rp. 200.000/Night',
-    address: 'Jl. Prasopaca Raya no.20, Kebayoran Baru, Jakarta Selatan',
-    status: 'confirmed',
-    tags: ['Whatever'],
-  },
-  {
-    date: '5 December - 10 December 2024',
-    image: 'image-path',
-    title: 'Bekasi Villa',
-    price: 'Rp. 200.000/Night',
-    address: 'Jl. Prasopaca Raya no.20, Harapan Indah, Bekasi',
-    status: 'finished',
-    tags: ['Whatever'],
-  },
-];
-
+import VillaExample from '../../assets/images/VillaExample.jpg';
 const Property = () => {
+  const [error, setError] = useState("");
+  const [villaOwnerid, setVillaOwnerid] = useState(null);
+  const [properties, setProperties] = useState([]);
+  const [selectedProperty, setSelectedProperty] = useState(null);
   const navigate = useNavigate();
+  const token = localStorage.getItem("jwtToken");
 
-  // Set default property to the first property in the list if available
-  const [selectedProperty, setSelectedProperty] = useState(
-    properties.length > 0 ? properties[0] : null
-  );
+  useEffect(() => {
+    if (!token) {
+      setError("No token found. Please log in.");
+      return;
+    }
 
-  const handlePropertyClick = (property) => {
-    setSelectedProperty(property);
+    // Fetch villa owner ID
+    axios
+      .post(
+        "/api/villa_owner/auth/getVillaOwnerId",
+        { token },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        const ownerId = response.data.data[0]?.toString();
+        setVillaOwnerid(ownerId);
+      })
+      .catch((err) => {
+        console.error("Error fetching user ID:", err);
+        setError("Failed to fetch user ID.");
+      });
+  }, [token]);
+
+  useEffect(() => {
+    if (!villaOwnerid) return;
+
+    // Fetch villas for the owner
+    axios
+      .post(
+        "/api/villa/view_owner_villa",
+        { villaOwnerid },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        const villaList = response.data.map((villa) => ({
+          title: villa.villa_name,
+          villadescription: villa.villa_desc,
+          address: villa.address,
+          price: villa.price,
+          occupancy: villa.occupancy,
+          availableDate: villa.availableDate,
+          imgpath: require('../../assets/images/VillaExample.jpg'),
+          villarating: villa.review_rating,
+          villacomment: villa.review_comment,
+          location: villa.locationName,
+        }));
+        setProperties(villaList);
+        if (villaList.length > 0) {
+          setSelectedProperty(villaList[0]); // Set the first property as default
+        }
+      })
+      .catch((err) => {
+        console.error("Error fetching villas:", err);
+        setError("Failed to fetch villas.");
+      });
+  }, [villaOwnerid, token]);
+
+  const handleNext = () => {
+    if (properties.length === 0 || !selectedProperty) return;
+    const currentIndex = properties.indexOf(selectedProperty);
+    const nextIndex = (currentIndex + 1) % properties.length;
+    setSelectedProperty(properties[nextIndex]);
+  };
+
+  const handlePrev = () => {
+    if (properties.length === 0 || !selectedProperty) return;
+    const currentIndex = properties.indexOf(selectedProperty);
+    const prevIndex = (currentIndex - 1 + properties.length) % properties.length;
+    setSelectedProperty(properties[prevIndex]);
   };
 
   return (
     <div>
-      <div>
-        <h1>Your Villa!</h1>
-        {/* Show message if no properties are available */}
-        {properties.length === 0 ? (
-          <p>Please add your property</p>
-        ) : (
-          <div className="properties-container">
-            {properties.map((currentProperty, index) => (
-              <PropertyList
-                key={index}
-                property={currentProperty}
-                onClick={handlePropertyClick}
+      <h1>Your Villas</h1>
+      {error && <p className="error-message">{error}</p>}
+      {properties.length === 0 ? (
+        <p>Please add your property.</p>
+      ) : (
+        <div className="properties-container">
+          {/* Previous Villa Button */}
+          <button onClick={handlePrev} className="navigation-button left">
+            ▶
+          </button>
+
+          {/* Main Villa Image */}
+          <div className="main-villa-container">
+            {selectedProperty && (
+              <img
+                src={selectedProperty.imgpath}
+                alt={selectedProperty.title}
+                className="main-villa-image"
               />
-            ))}
+            )}
           </div>
-        )}
-      </div>
-      {/* Conditionally render PropertyInformation if a property is selected */}
+
+          {/* Next Villa Button */}
+          <button onClick={handleNext} className="navigation-button right">
+            ◀
+          </button>
+        </div>
+      )}
+
+      {/* Property Description */}
       {selectedProperty && (
         <div className="property-information-container">
           <PropertyInformation property={selectedProperty} />

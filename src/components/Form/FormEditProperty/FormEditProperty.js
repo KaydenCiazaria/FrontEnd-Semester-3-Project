@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./FormAddProperty.css";
+import PopDelete from "../../PopUps/PopDelete/PopDelete"; // Import the modal for deletion
+import "./FormEditProperty.css"; // Ensure you're using the proper CSS for styling
 
-const FormAddProperty = () => {
+const FormEditProperty = () => {
   const [formData, setFormData] = useState({
     villaName: "",
     price: "",
@@ -9,7 +10,9 @@ const FormAddProperty = () => {
     tags: "",
     photo: null, // Photo file
   });
+  const [showModal, setShowModal] = useState(false); // For showing modal
 
+  // Handle form data change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -18,6 +21,7 @@ const FormAddProperty = () => {
     }));
   };
 
+  // Handle photo file input
   const handlePhotoChange = (e) => {
     const file = e.target.files[0];
     setFormData((prevData) => ({
@@ -26,15 +30,32 @@ const FormAddProperty = () => {
     }));
   };
 
+  // Handle form submit
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents page reload
+    e.preventDefault();
     console.log("Form submitted:", formData);
     // You can process the data here, such as sending it to a server
   };
 
+  // Open the modal for deletion
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  // Close the modal
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  // Handle delete confirmation
+  const handleDeleteConfirm = () => {
+    // Your delete action logic here (e.g., API call to delete the villa)
+    console.log("Villa deleted!");
+    window.location.href = "http://localhost:3000/headerLoggedIn/property"; // Redirect to property page after delete
+  };
+
   return (
     <div>
-      <h1>Add Villa</h1>
       <form onSubmit={handleSubmit} className="reservation">
         <div>
           <label>
@@ -95,10 +116,24 @@ const FormAddProperty = () => {
             />
           </label>
         </div>
-        <button type="submit">Submit</button>
+
+        {/* Buttons Container */}
+        <div className="form-buttons">
+          <button type="submit" className="submit-button">
+            Submit
+          </button>
+          <button type="button" className="delete-button" onClick={openModal}>
+            Delete
+          </button>
+        </div>
       </form>
+
+      {/* Modal Component */}
+      {showModal && (
+        <PopDelete closeModal={closeModal} onDeleteConfirm={handleDeleteConfirm} />
+      )}
     </div>
   );
 };
 
-export default FormAddProperty;
+export default FormEditProperty;
