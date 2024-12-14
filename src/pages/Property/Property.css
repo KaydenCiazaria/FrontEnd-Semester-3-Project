@@ -1,8 +1,82 @@
+.properties-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.main-villa-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-villa-image {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.navigation-button {
+  background-color: transparent;
+  border: 2px solid grey;  /* Grey border */
+  color: grey;  /* Grey text color */
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  transition: background-color 0.3s ease; /* Add smooth transition for color change */
+}
+
+.navigation-button:hover {
+  background-color: #f0f0f0; /* Light grey background on hover */
+}
+
+.navigation-button.left {
+  margin-right: 10px;
+  transform: rotate(180deg); /* Rotate the left button correctly */
+}
+
+.navigation-button.right {
+  margin-left: 10px;
+  transform: rotate(180deg);
+}
+
 .property-information-container {
-    display: flex;
-    justify-content: center; /* Horizontally center */
-    align-items: center; /* Vertically center */
-    text-align: center; /* Align text properly in case of multi-line content */
-    padding: 10px;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  padding-left: 20px;
+  position: relative; /* Ensures the container is positioned relative for absolute elements */
+}
+
+.property-info-container {
+  width: 680px;  /* Set fixed width */
+  height: 300px; /* Set fixed height for description container */
+  overflow-y: auto; /* Allow scrolling if content exceeds the height */
+  text-align: left;
+  color: black; /* Ensures the text is black */
+  margin-right: 30px; /* Adjust this value for left margin */
+  padding-bottom: 20px;
+  margin-bottom: 40px; /* Add margin to create space below the description */
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 10px;  /* Reduced gap between buttons */
+  margin-left: 50px; /* Adjust for more space between description and buttons */
+}
+
+/* Add this section to control the spacing between the description and buttons */
+.property-info-container {
+  margin-right: 30px; /* Increase this value to move the description further left */
+}
+
+/* Edit the following line to control the distance between description and buttons */
+.buttons-container {
+  margin-left: 50px; /* Adjust this value for more space between description and buttons */
+}

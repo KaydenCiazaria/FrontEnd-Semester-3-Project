@@ -26,6 +26,11 @@ const PropertyInformation = ({ property }) => {
 
   return (
     <div className="property-information-container">
+      {/* Add New Property button positioned at the top right */}
+      <button className="info-button add-button" onClick={handleAddProperty}>
+        Add new Property
+      </button>
+      
       <div className="property-info-container">
         <h2>Property Details</h2>
         <p><strong>Title:</strong> {property?.title || "N/A"}</p>
@@ -33,15 +38,14 @@ const PropertyInformation = ({ property }) => {
         <p><strong>Address:</strong> {property?.address || "N/A"}</p>
         <p><strong>Tags:</strong> {property?.tags?.join(', ') || "No tags available"}</p>
       </div>
+
+      {/* Action buttons container */}
       <div className="buttons-container">
-        <button className="info-button" onClick={handleAddProperty}>
-          Add new Property
+        <button className="info-button edit-button" onClick={handleEditProperty}>
+          Edit
         </button>
-        <button className="info-button" onClick={handleEditProperty}>
-          Edit your Properties?
-        </button>
-        <button className="info-button" onClick={handleViewSchedule}>
-          See your property schedule
+        <button className="info-button schedule-button" onClick={handleViewSchedule}>
+          Schedule
         </button>
       </div>
     </div>

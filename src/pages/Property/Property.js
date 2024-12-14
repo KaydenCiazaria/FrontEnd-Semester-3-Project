@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import PropertyList from '../../components/PropertyList/PropertyList';
+import axios from "axios";
 import PropertyInformation from '../../components/PropertyInformation/PropertyInformation';
 import './Property.css';
-import axios from 'axios';
-
+import VillaExample from '../../assets/images/VillaExample.jpg';
 const Property = () => {
   const [error, setError] = useState("");
   const [villaOwnerid, setVillaOwnerid] = useState(null);
-  const [properties, setProperties] = useState([]); // Initialize as an array
+  const [properties, setProperties] = useState([]);
   const [selectedProperty, setSelectedProperty] = useState(null);
   const navigate = useNavigate();
   const token = localStorage.getItem("jwtToken");
@@ -20,16 +19,17 @@ const Property = () => {
     }
 
     // Fetch villa owner ID
-    axios.post(
-      "/api/villa_owner/auth/getVillaOwnerId",
-      { token },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    axios
+      .post(
+        "/api/villa_owner/auth/getVillaOwnerId",
+        { token },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((response) => {
         const ownerId = response.data.data[0]?.toString();
         setVillaOwnerid(ownerId);
@@ -44,25 +44,26 @@ const Property = () => {
     if (!villaOwnerid) return;
 
     // Fetch villas for the owner
-    axios.post(
-      "/api/villa/view_owner_villa",
-      { villaOwnerid },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      }
-    )
+    axios
+      .post(
+        "/api/villa/view_owner_villa",
+        { villaOwnerid },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      )
       .then((response) => {
-        const villaList = response.data.map(villa => ({
+        const villaList = response.data.map((villa) => ({
           title: villa.villa_name,
           villadescription: villa.villa_desc,
           address: villa.address,
           price: villa.price,
           occupancy: villa.occupancy,
           availableDate: villa.availableDate,
-          imgpath: villa.imagePath,
+          imgpath: require('../../assets/images/VillaExample.jpg'),
           villarating: villa.review_rating,
           villacomment: villa.review_comment,
           location: villa.locationName,
@@ -78,32 +79,52 @@ const Property = () => {
       });
   }, [villaOwnerid, token]);
 
-  const handlePropertyClick = (property) => {
-    setSelectedProperty(property);
+  const handleNext = () => {
+    if (properties.length === 0 || !selectedProperty) return;
+    const currentIndex = properties.indexOf(selectedProperty);
+    const nextIndex = (currentIndex + 1) % properties.length;
+    setSelectedProperty(properties[nextIndex]);
+  };
+
+  const handlePrev = () => {
+    if (properties.length === 0 || !selectedProperty) return;
+    const currentIndex = properties.indexOf(selectedProperty);
+    const prevIndex = (currentIndex - 1 + properties.length) % properties.length;
+    setSelectedProperty(properties[prevIndex]);
   };
 
   return (
     <div>
-      <h1>Your Villas!</h1>
-      {/* Display error message if exists */}
-      {error && <p className="error">{error}</p>}
-      
-      {/* Display properties or fallback message */}
+      <h1>Your Villas</h1>
+      {error && <p className="error-message">{error}</p>}
       {properties.length === 0 ? (
-        <p>Please add your property</p>
+        <p>Please add your property.</p>
       ) : (
         <div className="properties-container">
-          {properties.map((property, index) => (
-            <PropertyList
-              key={index}
-              property={property}
-              onClick={() => handlePropertyClick(property)}
-            />
-          ))}
+          {/* Previous Villa Button */}
+          <button onClick={handlePrev} className="navigation-button left">
+            ▶
+          </button>
+
+          {/* Main Villa Image */}
+          <div className="main-villa-container">
+            {selectedProperty && (
+              <img
+                src={selectedProperty.imgpath}
+                alt={selectedProperty.title}
+                className="main-villa-image"
+              />
+            )}
+          </div>
+
+          {/* Next Villa Button */}
+          <button onClick={handleNext} className="navigation-button right">
+            ◀
+          </button>
         </div>
       )}
-      
-      {/* Display selected property information */}
+
+      {/* Property Description */}
       {selectedProperty && (
         <div className="property-information-container">
           <PropertyInformation property={selectedProperty} />
