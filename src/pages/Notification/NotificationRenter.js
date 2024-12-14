@@ -3,7 +3,7 @@ import NotificationCard from '../../components/NotificationCard/NotificationCard
 import "./Notification.css";
 import axios from 'axios';
 
-const Notification = () => {
+const NotificationRenter = () => {
   const [villas, setVillas] = useState([]); // Initialize as an empty array
   const [userId, setUserId] = useState(null);
   const [reservations, setReservations] = useState([]);
@@ -113,4 +113,4 @@ const Notification = () => {
   );
 };
 
-export default Notification;
+export default NotificationRenter;

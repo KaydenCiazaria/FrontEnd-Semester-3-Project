@@ -8,7 +8,8 @@ import Home from "./pages/Home/Home";
 import LoggedInHome from "./pages/LoggedInHome";
 import Register from "./pages/Register";
 import VillaInformation from "./pages/VillaInformation/VillaInformation";
-import Notification from "./pages/Notification/Notification";
+import NotificationRenter from "./pages/Notification/NotificationRenter";
+import NotificationOwner from "./pages/Notification/NotificationOwner";
 import ReservationDetail from "./pages/ReservationDetail/ReservationDetail";
 import Property from "./pages/Property/Property";
 import PropertySchedule from "./pages/PropertySchedule";
@@ -41,7 +42,8 @@ function App() {
         <Route path="/headerPlain/register" element={<Register />} />
         <Route path="/headerLoggedIn/reservationDetail" element={<ReservationDetail />} />
         
-        <Route path="/headerLoggedIn/notification" element={<Notification />} />
+        <Route path="/headerLoggedIn/notificationRenter" element={<NotificationRenter />} />
+        <Route path="/headerLoggedIn/notificationOwner" element={<NotificationOwner />} />
         <Route path="/VillaInformation" element={<VillaInformation />} />
         <Route path="headerLoggedIn/villaInformation" element={<VillaInformation />} />
 
