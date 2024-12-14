@@ -5,10 +5,11 @@ import axios from 'axios';
 
 const NotificationOwner = () => {
   const [villas, setVillas] = useState([]); // Initialize as an empty array
-  const [userId, setUserId] = useState(null);
+  const [villaOwnerid, setvillaOwnerid] = useState(null);
   const [reservations, setReservations] = useState([]);
   const [error, setError] = useState("");
   const token = localStorage.getItem("jwtToken");
+  const [OwnedVillas,setOwnedVillas] = useState("");
 
   useEffect(() => {
     if (!token) {
@@ -16,9 +17,8 @@ const NotificationOwner = () => {
       return;
     }
 
-    // Fetch user ID first
     axios.post(
-      "/api/users/auth/getusersId",
+      "/api/villa_owner/auth/getVillaOwnerId",
       { token },
       {
         headers: {
@@ -28,9 +28,9 @@ const NotificationOwner = () => {
       }
     )
       .then((response) => {
-        console.log("fetching user id", response.data); 
-        const userId = response.data.data[0]?.toString();
-        setUserId(userId); // Set userId for the next request
+        console.log("fetching Owner id", response.data); 
+        const villaOwnerid = response.data.data[0]?.toString();
+        setvillaOwnerid(villaOwnerid);
       })
       .catch((err) => {
         console.error("Error fetching user ID:", err);
@@ -39,12 +39,11 @@ const NotificationOwner = () => {
   }, [token]);
 
   useEffect(() => {
-    if (!userId) return;
+    if (!villaOwnerid) return;
   
-    // Fetch reservation data
     axios.post(
-      `/api/reservation/view_user_reservation`,
-      { userId },
+      "/api/villa/view_owner_villa",
+      { villaOwnerid },
       {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -53,40 +52,58 @@ const NotificationOwner = () => {
       }
     )
       .then((response) => {
-        const villaIds = response.data.map(reservation => reservation.villaId);
-        console.log("Villa IDs:", villaIds);
-  
-        if (villaIds.length > 0) {
-          // Fetch each villa by ID
-          Promise.all(
-            villaIds.map(id =>
-              axios.post(
-                `/api/villa/view_user_villa`,
-                { villaId: id },
-                {
-                  headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json",
-                  },
-                }
-              )
-            )
-          )
-            .then(responses => {
-              const villas = responses.map(res => res.data);
-              setVillas(villas);
-            })
-            .catch(err => {
-              console.error("Error fetching villas:", err);
-              setError("Failed to fetch villas.");
-            });
-        }
+        const villaIds = response.data.map((villa) => villa.id);
+        console.log("fetching List of Villa IDs", villaIds);
+        setOwnedVillas(villaIds); // Set the array of IDs
       })
       .catch((err) => {
+        console.error("Error fetching user ID:", err);
+        setError("Failed to fetch user ID.");
+      });
+  }, [villaOwnerid,token]);
+
+  useEffect(() => {
+    if (!OwnedVillas || OwnedVillas.length === 0) return;
+  
+    const fetchReservations = async () => {
+      try {
+        // Use Promise.all to fetch reservations for all villa IDs
+        const reservationRequests = OwnedVillas.map((villaId) =>
+          axios.post(
+            "/api/reservation/view_owner_reservation",
+            { villaId }, // Single villa ID per request
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          )
+        );
+  
+        // Wait for all requests to complete
+        const responses = await Promise.all(reservationRequests);
+  
+        // Combine all reservation results
+        const combinedReservations = responses.flatMap((response) =>
+          response.data.map((reservation) => ({
+            id: reservation.id,
+            villaId: reservation.villaId,
+          }))
+        );
+  
+        console.log("Fetching reservation list", combinedReservations);
+        setReservations(combinedReservations);
+      } catch (err) {
         console.error("Error fetching reservations:", err);
         setError("Failed to fetch reservations.");
-      });
-  }, [userId, token]);
+      }
+    };
+  
+    fetchReservations();
+  }, [OwnedVillas, token]);  
+  
+  // still need to fetch villas based on the fetched reservation.villaId
   
 
   return (
