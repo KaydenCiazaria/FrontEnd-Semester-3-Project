@@ -9,8 +9,8 @@ const VillaCard = ({ villa }) => {
   const handleNavigation = () => {
     // Determine the navigation path based on current location
     const basePath = location.pathname.startsWith("/headerLoggedIn")
-      ? "/headerLoggedIn/villaInformation"
-      : "/VillaInformation";
+      ? `/headerLoggedIn/villaInformation/${villa.id}`
+      : `/VillaInformation/${villa.id}`;
 
     navigate(basePath, { state: { villa } });
   };
