@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AvatarMenu.css";
-import Pop_Logout from ".././PopUps/PopLogout/PopLogout"; // Import the Pop_Logout component
+import Pop_Logout from "../PopUps/PopAreYouSure/PopAreYouSure"; // Import the Pop_Logout component
+import PopAreYourSure from "../PopUps/PopAreYouSure/PopAreYouSure";
 
 const AvatarMenu = () => {
   const [isOpen, setIsOpen] = useState(false); // State for dropdown
@@ -47,7 +48,7 @@ const AvatarMenu = () => {
       )}
 
       {/* Pop_Logout */}
-      {showLogoutModal && <Pop_Logout closeModal={closeLogoutModal} />}
+      {showLogoutModal && <PopAreYourSure closeModal={closeLogoutModal} />}
     </div>
   );
 };
