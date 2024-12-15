@@ -1,0 +1,25 @@
+.renter-info {
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 250px;
+  }
+  
+  .renter-info h2 {
+    margin-bottom: 10px;
+  }
+  
+  .verify-button {
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  .verify-button:hover {
+    background-color: #e6b800;
+  }
+  

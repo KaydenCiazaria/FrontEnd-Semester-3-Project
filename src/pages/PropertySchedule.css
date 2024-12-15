@@ -1,0 +1,106 @@
+.property-schedule-container {
+  padding: 20px;
+  background-color: #ffffff;
+  min-height: 90vh; /* Make the entire container take more of the screen height */
+}
+
+.schedule-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  height: 100%;
+}
+
+.calendar-container {
+  flex: 2; /* 2/3 of the screen */
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  padding: 20px; /* Added padding to make calendar take up more space */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 80vh; /* Increased the height of the calendar */
+}
+
+.renter-info-container {
+  flex: 1; /* 1/3 of the screen */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-height: 80vh; /* Increased the height of the Renter Information */
+}
+
+.react-calendar {
+  font-size: 1.5rem; /* Default font size for the calendar numbers */
+  height: 100%; /* Ensures the calendar takes up the full height of its container */
+  width: 100%; /* Make the calendar take full width of the parent container */
+  margin: 0; /* Remove any extra margins */
+}
+
+.react-calendar__navigation {
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.react-calendar__navigation button {
+  color: black;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.react-calendar__tile {
+  font-size: 1.5rem; /* Default size for the date numbers */
+  display: flex;
+  align-items: center; /* Vertically center the date numbers */
+  justify-content: center; /* Horizontally center the date numbers */
+  height: 60px; /* Set a fixed height for each calendar cell */
+}
+
+.react-calendar__tile:hover {
+  background-color: #e6e6e6;
+  cursor: pointer;
+}
+
+.react-calendar__month-view__days__day {
+  color: black !important; /* Default color for all dates is black */
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: red !important; /* Color for weekends */
+}
+
+/* Styling for reserved dates */
+.reserved-date {
+  background-color: #216894 !important; /* Set the color of reserved dates to the requested blue */
+  color: white !important; /* Text color for reserved dates should be white */
+}
+
+.react-calendar__tile--reserved {
+  background-color: #216894 !important;
+  color: white !important;
+}
+
+/* Adjusting the top navigation bar (Month Selector) */
+.react-calendar__navigation {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.verify-renter-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px 20px;
+  background-color: #eaed4c; /* Yellow color */
+  color: black;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.verify-renter-button:hover {
+  background-color: #c7c937;
+}
