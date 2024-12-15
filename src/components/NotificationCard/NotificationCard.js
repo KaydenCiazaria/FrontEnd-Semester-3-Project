@@ -48,6 +48,8 @@ const NotificationCard = ({ villa }) => {
           <p>Price: {villa.price}</p>
           <p>Address: {villa.address}</p>
           <p>Reserved Dates: {villa.date}</p>
+          <p>Message from user: {villa.message}</p>
+          <p>Verification code:{villa.verificationCode}</p>
           <button onClick={buttonFunction}>More Information!</button>
         </>
       );

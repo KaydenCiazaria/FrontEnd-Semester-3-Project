@@ -9,7 +9,8 @@ const NotificationOwner = () => {
   const [reservations, setReservations] = useState([]);
   const [error, setError] = useState("");
   const token = localStorage.getItem("jwtToken");
-  const [OwnedVillas,setOwnedVillas] = useState("");
+  const [OwnedVillas, setOwnedVillas] = useState("");
+  const [ReservedOwnedVillas, setReservedOwnedVillas] = useState([]);
 
   useEffect(() => {
     if (!token) {
@@ -60,18 +61,18 @@ const NotificationOwner = () => {
         console.error("Error fetching user ID:", err);
         setError("Failed to fetch user ID.");
       });
-  }, [villaOwnerid,token]);
+  }, [villaOwnerid, token]);
 
   useEffect(() => {
     if (!OwnedVillas || OwnedVillas.length === 0) return;
   
     const fetchReservations = async () => {
       try {
-        // Use Promise.all to fetch reservations for all villa IDs
+        // Fetch reservations for all villa IDs
         const reservationRequests = OwnedVillas.map((villaId) =>
           axios.post(
             "/api/reservation/view_owner_reservation",
-            { villaId }, // Single villa ID per request
+            { villaId },
             {
               headers: {
                 Authorization: `Bearer ${token}`,
@@ -81,7 +82,6 @@ const NotificationOwner = () => {
           )
         );
   
-        // Wait for all requests to complete
         const responses = await Promise.all(reservationRequests);
   
         // Combine all reservation results
@@ -89,6 +89,8 @@ const NotificationOwner = () => {
           response.data.map((reservation) => ({
             id: reservation.id,
             villaId: reservation.villaId,
+            messagefromuser: reservation.message,
+            verificationCode: reservation.verificationCode
           }))
         );
   
@@ -101,24 +103,63 @@ const NotificationOwner = () => {
     };
   
     fetchReservations();
-  }, [OwnedVillas, token]);  
+  }, [OwnedVillas, token]);
   
-  // still need to fetch villas based on the fetched reservation.villaId
+  useEffect(() => {
+    if (!reservations || reservations.length === 0) return;
   
-
+    const fetchReservedVillas = async () => {
+      try {
+        // Fetch villa details for each reservation
+        const villaRequests = reservations.map((reservation) =>
+          axios.post(
+            "/api/villa/view_user_villa",
+            { villaId: reservation.villaId },
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+              },
+            }
+          )
+        );
+  
+        const villaResponses = await Promise.all(villaRequests);
+  
+        // Combine villa details with reservation data
+        const combinedVillas = villaResponses.map((response, index) => {
+          const { villa_name, villa_desc, price } = response.data;
+          const verificationCode = reservations[index]?.verificationCode
+          const messagefromuser = reservations[index]?.messagefromuser; // Get the message from reservation
+          return { villa_name, villa_desc, price, messagefromuser,verificationCode };
+        });
+  
+        console.log("Fetching List of Reserved Villas", combinedVillas);
+        setReservedOwnedVillas(combinedVillas);
+      } catch (err) {
+        console.error("Error fetching reserved villas:", err);
+        setError("Failed to fetch reserved villas.");
+      }
+    };
+  
+    fetchReservedVillas();
+  }, [reservations, token]);
+  
   return (
     <div className="notification-background">
       <div className="content-box">
-        {villas && villas.length > 0 ? (
-          villas.map((villa, index) => (
+        {ReservedOwnedVillas && ReservedOwnedVillas.length > 0 ? (
+          ReservedOwnedVillas.map((villa, index) => (
             <NotificationCard
               key={index}
               villa={{
-                type: villa.reservation_status ? 'reserved-villas' : 'villa-approval',
+                type: 'reserved-villas', // Keeping 'reserved-villas' as the type
                 date: `${villa.createdOn} - ${villa.updatedOn}`,  // Replace with proper date logic
-                title: villa.villa_name, // Assuming villa has a title property
-                price: villa.price ? `Rp. ${villa.price}/Night` : 'Rp. 200.000/Night', // Adjust price if needed
-                address: villa.address // Assuming villa has an address property
+                title: villa.villa_name, // Use the villa name from the response
+                price: villa.price ? `Rp. ${villa.price}/Night` : 'Rp. 200.000/Night', // Adjust price as needed
+                address: villa.villa_desc, // Assuming villa_desc is the address or description of the villa
+                message: villa.messagefromuser, // Add the message from the reservation
+                verificationCode : villa.verificationCode
               }}
             />
           ))
