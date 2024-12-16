@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import VillaCard from '../components/VillaCard/VillaCard';
+import VillaExample from '../assets/images/VillaExample.jpg';
+import VillaExample2 from '../assets/images/VillaExample2.jpg';
 
 const LoggedInHome = () => {
 
@@ -15,7 +17,7 @@ const LoggedInHome = () => {
 
         const transformedVillas = data.map(villa => ({
           id: villa.id,
-          image: "",
+          image: villa.imagePath[0] === "1" ? VillaExample : VillaExample2,
           title: villa.villa_name,
           price: `${villa.price}/Night`,
           rating: `${villa.review_rating}/5`,
