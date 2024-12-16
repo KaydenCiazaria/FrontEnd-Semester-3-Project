@@ -174,7 +174,7 @@ const FormEditProperty = () => {
 
   return (
     <div>
-      <h1>Add Villa</h1>
+      <h1>Edit Villa</h1>
       <form onSubmit={handleSubmit} className="reservation">
         <div>
           <label>
