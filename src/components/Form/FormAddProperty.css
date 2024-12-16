@@ -7,6 +7,7 @@ form {
     max-width: 500px; /* Default width */
     margin: 20px auto; /* Center the form horizontally */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
   }
   
   /* Input, Textarea, and File Input Styling */
@@ -24,6 +25,24 @@ form {
     border-radius: 4px; /* Rounded corners for inputs */
     font-size: 16px; /* Increase font size */
     box-sizing: border-box; /* Include padding in width calculation */
+  }
+
+  form textarea {
+    font-family: inherit;
+    width: 100%; /* Full width for inputs */
+    padding: 10px; /* Add padding inside the inputs */
+    margin-bottom: 16px; /* Space between inputs */
+    border: 1px solid #ccc; /* Border around inputs */
+    border-radius: 4px; /* Rounded corners for inputs */
+    font-size: 16px; /* Increase font size */
+    box-sizing: border-box; /* Include padding in width calculation */
+  }
+
+  form select {
+    font-family: inherit;
+    font-size: inherit;
+    border: none;
+    padding: 10px;
   }
   
   form input[type="file"] {

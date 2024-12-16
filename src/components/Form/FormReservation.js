@@ -19,17 +19,15 @@ const FormReservation = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevents page reload
+    e.preventDefault();
     const token = localStorage.getItem("jwtToken");
 
-    console.log(`Token: ${token}`);
-
-    const useridend = "http://localhost:8080/api/users/auth/getusersId";
-    const formend = "http://localhost:8080/api/reservation/create_reservation";
+    const fetchid_end = "http://localhost:8080/api/users/auth/getusersId";
+    const form_end = "http://localhost:8080/api/reservation/create_reservation";
 
     try {
 
-      const getuseid = await fetch(useridend, {
+      const getuseid = await fetch(fetchid_end, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -44,9 +42,8 @@ const FormReservation = () => {
 
       const result = await getuseid.json();
       const userid = JSON.stringify(result.data).slice(1, -1);
-      console.log(`User id: ${userid}`);
 
-      const sendreserve = await fetch(formend, {
+      const sendform = await fetch(form_end, {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -61,11 +58,11 @@ const FormReservation = () => {
         })
       })
 
-      if (!sendreserve.ok) {
-        throw new Error(`Error submitting form: ${sendreserve.status}`)
+      if (!sendform.ok) {
+        throw new Error(`Error submitting form: ${sendform.status}`)
       }
 
-      const resresult = await sendreserve.json();
+      const resresult = await sendform.json();
       console.log("Form submitted successfully", resresult);
 
     }
