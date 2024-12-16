@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import VillaCard from '../../components/VillaCard/VillaCard';
 import './Home.css'; // Ensure this file contains styling for the grid
-
+import VillaExample from '../../assets/images/VillaExample.jpg';
+import VillaExample2 from '../../assets/images/VillaExample2.jpg';
 const Home = () => {
 
   const [villas, setVillas] = useState([]);
@@ -15,7 +16,7 @@ const Home = () => {
 
         const transformedVillas = data.map(villa => ({
           id: villa.id,
-          image: "",
+          image: villa.imagePath[0] === "1" ? VillaExample : VillaExample2,
           title: villa.villa_name,
           price: `${villa.price}/Night`,
           rating: `${villa.review_rating}/5`,
