@@ -12,13 +12,13 @@ const VillaInformation = () => {
       <div className="villa-info">
         {/* Image of the Villa */}
         <div className="villa-image-container">
-          <img src={villa.imageUrl} alt={villa.name} className="villa-image" />
+          <img src={villa.image} alt={villa.name} className="villa-image" />
         </div>
 
         {/* Villa Details */}
         <div className="villa-details">
-          <h1>{villa.name}</h1>
-          <p className="rating">Rating: {villa.rating}</p>
+          <h1>{villa.title}</h1>
+          <p className="rating">Rating: {villa.rating}⭐</p>
           <div className="info-item">
             <span className="label">Address:</span>
             <span className="value">{villa.address}</span>
