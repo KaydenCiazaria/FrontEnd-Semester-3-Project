@@ -95,7 +95,6 @@ const PropertySchedule = () => {
           return acc;
         }, {});
   
-        // Update the reservation data state
         setReservationData(formattedReservations);
   
         console.log(`Formatted reservations: ${JSON.stringify(formattedReservations)}`);
