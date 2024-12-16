@@ -4,6 +4,8 @@ import axios from "axios";
 import PropertyInformation from '../../components/PropertyInformation/PropertyInformation';
 import './Property.css';
 import VillaExample from '../../assets/images/VillaExample.jpg';
+import VillaExample2 from '../../assets/images/VillaExample2.jpg';
+
 const Property = () => {
   const [error, setError] = useState("");
   const [villaOwnerid, setVillaOwnerid] = useState(null);
@@ -63,11 +65,12 @@ const Property = () => {
           price: villa.price,
           occupancy: villa.occupancy,
           availableDate: villa.availableDate,
-          imgpath: require('../../assets/images/VillaExample.jpg'),
+          imgpath: villa.imagePath[0] === "1" ? VillaExample : VillaExample2,
           villarating: villa.review_rating,
           villacomment: villa.review_comment,
           location: villa.locationName,
         }));
+        console.log(villaList);
         setProperties(villaList);
         if (villaList.length > 0) {
           setSelectedProperty(villaList[0]); // Set the first property as default
