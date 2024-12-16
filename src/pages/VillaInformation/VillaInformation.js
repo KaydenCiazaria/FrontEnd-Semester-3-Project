@@ -4,26 +4,47 @@ import FormReservation from '../../components/Form/FormReservation';
 import './VillaInformation.css';
 
 const VillaInformation = () => {
-  const location = useLocation();
-  const { villa } = location.state; // Assumes villa data is passed from the previous page
+  const location = useLocation(); // Access the current URL and information
+  const { villa } = location.state; // Accessing the state passed from VillaCard.js
 
   return (
     <div className="villa-container">
-      <div className="villa-header">
-        <img src={villa.imageUrl} alt={villa.name} className="villa-image" />
+      <div className="villa-info">
+        {/* Image of the Villa */}
+        <div className="villa-image-container">
+          <img src={villa.imageUrl} alt={villa.name} className="villa-image" />
+        </div>
+
+        {/* Villa Details */}
         <div className="villa-details">
           <h1>{villa.name}</h1>
-          <p className="villa-rating">Rating: {villa.rating}</p>
-          <p><strong>Address:</strong> {villa.address}</p>
-          <p><strong>Short Description:</strong> {villa.description}</p>
-          <p><strong>Tags:</strong> {villa.tags.join(', ')}</p>
-          <p><strong>Price:</strong> ${villa.price}</p>
+          <p className="rating">Rating: {villa.rating}</p>
+          <div className="info-item">
+            <span className="label">Address:</span>
+            <span className="value">{villa.address}</span>
+          </div>
+          <div className="info-item">
+            <span className="label">Short Description:</span>
+            <span className="value">{villa.shortDescription}</span>
+          </div>
+          <div className="info-item">
+            <span className="label">Tags:</span>
+            <span className="value">{villa.tags.join(", ")}</span>
+          </div>
+          <div className="info-item">
+            <span className="label">Price:</span>
+            <span className="value">{villa.price}</span>
+          </div>
         </div>
       </div>
-      <div className="form-section">
+      
+      {/* Add Reserve Now heading inside the form container */}
+      <div className="reserve-heading">
         <h2>Reserve Now!</h2>
-        <FormReservation />
       </div>
+      
+      {/* Form Component */}
+      <FormReservation />
     </div>
   );
 };
