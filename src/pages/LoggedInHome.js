@@ -31,7 +31,7 @@ const LoggedInHome = () => {
           price: `${villa.price}/Night`,
           rating: `${villa.review_rating}/5`,
           address: villa.address,
-          tags: ['Good facilities']
+          tags: villa.villa_desc
         }));
         setVillas(transformedVillas);
       } catch (error) {

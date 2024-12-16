@@ -30,7 +30,7 @@ const Home = () => {
           price: `${villa.price}/Night`,
           rating: `${villa.review_rating}/5`,
           address: villa.address,
-          tags: ['Whatever']
+          tags: villa.villa_desc
         }));
         setVillas(transformedVillas);
       } catch (error) {

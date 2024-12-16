@@ -32,7 +32,7 @@ const VillaCard = ({ villa }) => {
         <p className="villa-price">Price: {villa.price}</p>
         <p className="villa-rating">Rating: {villa.rating} ⭐</p>
         <p className="villa-address">Address: {villa.address}</p>
-        <p className="villa-tags">Tags: {villa.tags.join(", ")}</p>
+        <p className="villa-tags">Tags: {villa.tags}</p>
       </div>
     </div>
   );
