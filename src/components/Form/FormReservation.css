@@ -1,29 +1,43 @@
-/* Example CSS for the reservation form */
 .reservation {
-    max-width: 1000px; /* Override the default width */
+    max-width: 1000px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
   }
   
-  .reservation label {
+  .form-row {
+    display: flex;
+    align-items: center; /* Vertically align label and input */
+    gap: 10px; /* Space between label and input */
+  }
+  
+  .form-row label {
+    width: 150px; /* Fixed width for all labels */
     font-size: 1rem;
     font-weight: bold;
-    display: flex;
-    flex-direction: column;
   }
   
-  .reservation input,
-  .reservation textarea {
+  .form-row input {
+    flex: 1; /* Input field takes the remaining space */
     padding: 10px;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 5px;
-    margin-top: 5px;
+  }
+  
+  .form-row textarea {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 100px; /* Larger height for Notes field */
+    resize: vertical; /* Allow user to resize vertically */
   }
   
   .reservation button {
+    align-self: flex-start;
     background-color: #4CAF50;
     color: white;
     font-size: 1rem;

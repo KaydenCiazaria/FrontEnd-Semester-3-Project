@@ -10,7 +10,7 @@ const FormReservation = () => {
     notes: "",
   });
 
-  const { id } = useParams(); // Villa ID from URL
+  const { id } = useParams();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,16 +21,13 @@ const FormReservation = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevents page reload
+    e.preventDefault();
     const token = localStorage.getItem("jwtToken");
-
-    console.log(`Token: ${token}`);
 
     const useridend = "http://localhost:8080/api/users/auth/getusersId";
     const formend = "http://localhost:8080/api/reservation/create_reservation";
 
     try {
-      // Fetch User ID
       const getuseid = await fetch(useridend, {
         method: "POST",
         headers: {
@@ -46,9 +43,7 @@ const FormReservation = () => {
 
       const result = await getuseid.json();
       const userid = JSON.stringify(result.data).slice(1, -1);
-      console.log(`User ID: ${userid}`);
 
-      // Submit Reservation Form
       const sendreserve = await fetch(formend, {
         method: "POST",
         headers: {
@@ -70,8 +65,7 @@ const FormReservation = () => {
         throw new Error(`Error submitting form: ${sendreserve.status}`);
       }
 
-      const resresult = await sendreserve.json();
-      console.log("Form submitted successfully", resresult);
+      console.log("Form submitted successfully");
     } catch (error) {
       console.error("Error occurred submitting form: ", error);
     }
@@ -79,40 +73,38 @@ const FormReservation = () => {
 
   return (
     <form onSubmit={handleSubmit} className="reservation">
-      <div>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </label>
+      <div className="form-row">
+        <label htmlFor="name">Name:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+        />
       </div>
-      <div>
-        <label>
-          Phone Number:
-          <input
-            type="tel"
-            name="phoneNumber"
-            value={formData.phoneNumber}
-            onChange={handleChange}
-            required
-          />
-        </label>
+      <div className="form-row">
+        <label htmlFor="phoneNumber">Phone Number:</label>
+        <input
+          type="tel"
+          id="phoneNumber"
+          name="phoneNumber"
+          value={formData.phoneNumber}
+          onChange={handleChange}
+          required
+        />
       </div>
-      <div>
-        <label>
-          Notes:
-          <textarea
-            name="notes"
-            value={formData.notes}
-            onChange={handleChange}
-            placeholder="Add any additional notes or special requests..."
-          />
-        </label>
+      <div className="form-row">
+        <label htmlFor="notes">Notes:</label>
+        <textarea
+          id="notes"
+          name="notes"
+          value={formData.notes}
+          onChange={handleChange}
+          placeholder="Add any additional notes or special requests..."
+          required
+        />
       </div>
       <button type="submit">Submit</button>
     </form>
