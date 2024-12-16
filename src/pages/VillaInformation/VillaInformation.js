@@ -29,7 +29,7 @@ const VillaInformation = () => {
           </div>
           <div className="info-item">
             <span className="label">Tags:</span>
-            <span className="value">{villa.tags.join(", ")}</span>
+            <span className="value">{villa.tags}</span>
           </div>
           <div className="info-item">
             <span className="label">Price:</span>

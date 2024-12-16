@@ -36,7 +36,7 @@ const PropertyInformation = ({ property }) => {
         <p><strong>Title:</strong> {property?.title || "N/A"}</p>
         <p><strong>Price:</strong> {property?.price || "N/A"}</p>
         <p><strong>Address:</strong> {property?.address || "N/A"}</p>
-        <p><strong>Tags:</strong> {property?.tags?.join(', ') || "No tags available"}</p>
+        <p><strong>Tags:</strong> {property?.tags || "No tags available"}</p>
       </div>
 
       {/* Action buttons container */}
