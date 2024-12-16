@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import PopDelete from "../../PopUps/PopDelete/PopDelete"; // Import the modal for deletion
 import "./FormEditProperty.css"; // Ensure you're using the proper CSS for styling
-
+import { useParams } from "react-router-dom";
 const FormEditProperty = () => {
   const [formData, setFormData] = useState({
     villaName: "",
     price: "",
     address: "",
     tags: "",
-    photo: null, // Photo file
+    photo: "", // Photo file
   });
   const [showModal, setShowModal] = useState(false); // For showing modal
-
+  const { id } = useParams();
+  console.log("villa id is",id);
+  const token = localStorage.getItem("jwtToken");
+  console.log(`Token: ${token}`);
   // Handle form data change
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,14 +24,6 @@ const FormEditProperty = () => {
     }));
   };
 
-  // Handle photo file input
-  const handlePhotoChange = (e) => {
-    const file = e.target.files[0];
-    setFormData((prevData) => ({
-      ...prevData,
-      photo: file,
-    }));
-  };
 
   // Handle form submit
   const handleSubmit = (e) => {
@@ -105,14 +100,14 @@ const FormEditProperty = () => {
           </label>
         </div>
         <div>
-          <label>
-            Photo:
+        <label>
+            Photo 
             <input
-              type="file"
+              type="text"
               name="photo"
-              onChange={handlePhotoChange}
-              accept="image/*"
-              required
+              value={formData.photo}
+              onChange={handleChange}
+              placeholder="(pick 1-5)"
             />
           </label>
         </div>

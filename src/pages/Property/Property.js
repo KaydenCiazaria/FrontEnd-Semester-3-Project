@@ -62,6 +62,7 @@ const Property = () => {
       )
       .then((response) => {
         const villaList = response.data.map((villa) => ({
+          id : villa.id,
           title: villa.villa_name,
           villadescription: villa.villa_desc,
           address: villa.address,

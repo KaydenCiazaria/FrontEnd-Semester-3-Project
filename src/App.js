@@ -50,7 +50,7 @@ function App() {
 
         <Route path="headerLoggedIn/property" element={<Property />} />
         <Route path="headerLoggedIn/propertySchedule" element={<PropertySchedule />} />
-        <Route path="headerLoggedIn/propertyEdit" element={<PropertyEdit />} />
+        <Route path="headerLoggedIn/propertyEdit/:id" element={<PropertyEdit />} />
         <Route path="headerLoggedIn/propertyAdd" element={<PropertyAdd />} />
 
         <Route path="headerLoggedIn/error" element={<Error />} />
