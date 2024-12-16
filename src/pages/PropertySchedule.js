@@ -86,9 +86,9 @@ const PropertySchedule = () => {
           const { createdOn, userInfo, message, numberOfGuests } = reservation;
           const formedDate = createdOn.split('T')[0];
           acc[formedDate] = {
-            renterName: userInfo.name,
+            renterName: userInfo.firstName + ' ' + userInfo.lastName,
             email: userInfo.email,
-            phoneNumber: userInfo.phoneNumber,
+            phoneNumber: userInfo.phone_num,
             numberOfGuests: numberOfGuests,
             message: message,
           };
@@ -97,7 +97,6 @@ const PropertySchedule = () => {
   
         setReservationData(formattedReservations);
   
-        console.log(`Formatted reservations: ${JSON.stringify(formattedReservations)}`);
       } catch (error) {
         console.error(`Error fetching reservations: ${error}`);
       }
