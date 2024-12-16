@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import SearchBar from "../SearchBar/SearchBar";
 import AvatarMenu from "../BurgerMenu/AvatarMenu";
 import "./Header.css";
-import logo from '../../assets/images/logo.png';
+import logo from "../../assets/images/logo.png";
 
 const HeaderLoggedIn = ({ type }) => {
   const navigate = useNavigate(); // Initialize useNavigate
@@ -13,9 +13,13 @@ const HeaderLoggedIn = ({ type }) => {
 
   const handleInformation = () => {
     if (location.pathname.startsWith("/headerLoggedIn/property")) {
-      navigate("/headerLoggedIn/notificationOwner", { state: { type: "Notification" } });
+      navigate("/headerLoggedIn/notificationOwner", {
+        state: { type: "Notification" },
+      });
     } else {
-      navigate("/headerLoggedIn/notificationRenter", { state: { type: "Notification" } }); // use id later
+      navigate("/headerLoggedIn/notificationRenter", {
+        state: { type: "Notification" },
+      }); // use id later
     }
   };
 
@@ -23,8 +27,15 @@ const HeaderLoggedIn = ({ type }) => {
   const handleLogoClick = () => {
     if (location.pathname.startsWith("/headerLoggedIn/property")) {
       navigate("/headerLoggedIn/property", { state: { type: "My Property" } });
-    } else {
+    }  else if (location.pathname.startsWith("/headerLoggedIn/notificationOwner")) {
+      navigate("/headerLoggedIn/property", { state: { type: "My Property" } });
+    } else if (location.pathname.startsWith("/headerLoggedIn/notificationUser")) {
       navigate("/headerLoggedIn/");
+    } else if (location.pathname.startsWith("/headerLoggedIn/")) {
+      navigate("/headerLoggedIn/");
+    } 
+    else {
+      navigate("/headerLoggedIn/error");
     }
   };
 
@@ -39,7 +50,9 @@ const HeaderLoggedIn = ({ type }) => {
         <span>VillaBooking.com</span>
       </div>
       {typeName ? (
-        <div className="user-name"><h1>{typeName}</h1></div>
+        <div className="user-name">
+          <h1>{typeName}</h1>
+        </div>
       ) : (
         <SearchBar />
       )}

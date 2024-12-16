@@ -15,6 +15,7 @@ import Property from "./pages/Property/Property";
 import PropertySchedule from "./pages/PropertySchedule";
 import PropertyEdit from "./pages/PropertyEdit";
 import PropertyAdd from "./pages/PropertyAdd";
+import Error from "./pages/Error";
 import "./App.css";
 import "./assets/css/global.css";
 
@@ -51,6 +52,10 @@ function App() {
         <Route path="headerLoggedIn/propertySchedule" element={<PropertySchedule />} />
         <Route path="headerLoggedIn/propertyEdit" element={<PropertyEdit />} />
         <Route path="headerLoggedIn/propertyAdd" element={<PropertyAdd />} />
+
+        <Route path="headerLoggedIn/error" element={<Error />} />
+        <Route path="*" element={<Error />} />
+
       </Routes>
 
       <Footer />
