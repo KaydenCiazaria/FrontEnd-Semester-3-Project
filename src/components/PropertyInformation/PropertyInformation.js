@@ -13,7 +13,7 @@ const PropertyInformation = ({ property }) => {
   };
 
   const handleEditProperty = () => {
-    navigate("/headerLoggedIn/propertyEdit", {
+    navigate(`/headerLoggedIn/propertyEdit/${property.id}`, {
       state: { property, type: "Edit Property" },
     });
   };
