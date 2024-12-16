@@ -4,10 +4,13 @@ import "./FormAddProperty.css";
 const FormAddProperty = () => {
   const [formData, setFormData] = useState({
     villaName: "",
-    price: "",
+    villaDesc: "",
     address: "",
+    price: "",
+    occupancy: 0,
     tags: "",
-    photo: null, // Photo file
+    locationName: "",
+    photo: ""
   });
 
   const handleChange = (e) => {
@@ -18,18 +21,98 @@ const FormAddProperty = () => {
     }));
   };
 
-  const handlePhotoChange = (e) => {
-    const file = e.target.files[0];
+  const handleLocChange = (e) => {
+    const { name, value } = e.target;
+
     setFormData((prevData) => ({
       ...prevData,
-      photo: file,
-    }));
+      locationName: value
+    })
+  
+  )
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents page reload
-    console.log("Form submitted:", formData);
-    // You can process the data here, such as sending it to a server
+  const formatCurrency = (value) => {
+    if (!value) return '';
+
+    const numericValue = value.replace(/[^0-9]/g, '');
+
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+    }).format(numericValue);
+  };
+  
+  const handlePrice = (e) => {
+    const input = e.target.value;
+    const value = input.replace(/[^0-9]/g, '');
+
+    setFormData((prevData) => ({
+      ...prevData,
+      price: value
+    }))
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem("jwtToken");
+
+    const fetchid_end = "http://localhost:8080/api/villa_owner/auth/getVillaOwnerId";
+    const form_end = "http://localhost:8080/api/villa/create_villa";
+
+    const formattedPrice = formatCurrency(formData.price);
+
+    try {
+
+      const getuseid = await fetch(fetchid_end, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        }
+      });
+
+      if (!getuseid.ok) {
+        throw new Error(`Error fetching userid: ${getuseid.status}`);
+      };
+
+      const result = await getuseid.json();
+      const userid = JSON.stringify(result.data).slice(2, -2);
+
+      const sendform = await fetch(form_end, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Accept" : "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          villa_name: formData.villaName,
+          villa_desc: formData.villaDesc,
+          address: formData.address,
+          price: formattedPrice,
+          occupancy: formData.occupancy,
+          availableDate: formData.availableDate,
+          villaOwnerid: userid,
+          locationName: formData.locationName,
+          imagePath: formData.photo
+        })
+      })
+
+      if (!sendform.ok) {
+        throw new Error(`Error submitting form: ${sendform.status}`)
+      }
+
+      const resresult = await sendform.json();
+      console.log("Form submitted successfully", resresult);
+
+    }
+
+    catch (error) {
+      console.error("Error occurred submitting form: ", error);
+    }
+    
   };
 
   return (
@@ -49,15 +132,14 @@ const FormAddProperty = () => {
             />
           </label>
           <label>
-            Price (per night):
-            <input
-              type="number"
-              name="price"
-              value={formData.price}
+            Villa Description:
+            <textarea style={{height:"100px",verticalAlign:"top"}}
+              name="villaDesc"
+              value={formData.villaDesc}
               onChange={handleChange}
-              placeholder="Enter the price per night"
+              placeholder="Enter the villa description"
               required
-            />
+            ></textarea>
           </label>
           <label>
             Address:
@@ -69,6 +151,37 @@ const FormAddProperty = () => {
               placeholder="Enter the villa address"
               required
             />
+          </label>
+          <label>
+            Price (per night):
+            <input
+              type="number"
+              name="price"
+              value={formData.price}
+              onChange={handlePrice}
+              placeholder="Enter the price per night"
+              required
+            />
+          </label>
+          <label>
+            Occupancy:
+            <input
+              type="number"
+              name="occupancy"
+              value={formData.occupancy}
+              onChange={handleChange}
+              placeholder="Enter maximum occupancy"
+              required
+            />
+          </label>
+          <label>Location<br />
+            <select name="location" value={formData.locationName} onChange={handleLocChange} required>
+              <option value="Jakarta">Jakarta</option>
+              <option value="Bogor">Bogor</option>
+              <option value="Depok">Depok</option>
+              <option value="Tangerang">Tangerang</option>
+              <option value="Bekasi">Bekasi</option>
+            </select>
           </label>
         </div>
         <div>
@@ -87,11 +200,12 @@ const FormAddProperty = () => {
           <label>
             Photo:
             <input
-              type="file"
+              type="text"
               name="photo"
-              onChange={handlePhotoChange}
-              accept="image/*"
+              value={formData.photo}
+              onChange={handleChange}
               required
+              placeholder="Enter a number from 1-10"
             />
           </label>
         </div>
