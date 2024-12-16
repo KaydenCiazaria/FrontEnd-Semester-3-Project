@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import VillaCard from '../../components/VillaCard/VillaCard';
 import './Home.css'; // Ensure this file contains styling for the grid
-import VillaExample from '../../assets/images/VillaExample.jpg';
+import VillaExample1 from '../../assets/images/VillaExample1.jpg';
 import VillaExample2 from '../../assets/images/VillaExample2.jpg';
+import VillaExample3 from '../../assets/images/VillaExample3.webp';
+import VillaExample4 from '../../assets/images/VillaExample4.avif';
+import VillaExample5 from '../../assets/images/VillaExample5.webp';
 const Home = () => {
 
   const [villas, setVillas] = useState([]);
@@ -16,7 +19,13 @@ const Home = () => {
 
         const transformedVillas = data.map(villa => ({
           id: villa.id,
-          image: villa.imagePath[0] === "1" ? VillaExample : VillaExample2,
+          image: villa.imagePath ? 
+          villa.imagePath[0] === "1" ? VillaExample1 :
+          villa.imagePath[0] === "2" ? VillaExample2 :
+          villa.imagePath[0] === "3" ? VillaExample3 :
+          villa.imagePath[0] === "4" ? VillaExample4 :
+          villa.imagePath[0] === "5" ? VillaExample5 :
+          villa.imagePath[0] : VillaExample1,
           title: villa.villa_name,
           price: `${villa.price}/Night`,
           rating: `${villa.review_rating}/5`,
