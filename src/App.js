@@ -48,10 +48,10 @@ function App() {
         <Route path="/VillaInformation/:id" element={<VillaInformation />} />
         <Route path="headerLoggedIn/villaInformation/:id" element={<VillaInformation />} />
 
-        <Route path="headerLoggedIn/property" element={<Property />} />
-        <Route path="headerLoggedIn/propertySchedule" element={<PropertySchedule />} />
-        <Route path="headerLoggedIn/propertyEdit/:id" element={<PropertyEdit />} />
-        <Route path="headerLoggedIn/propertyAdd" element={<PropertyAdd />} />
+        <Route path="headerLoggedIn/Property" element={<Property />} />
+        <Route path="headerLoggedIn/PropertySchedule/:id" element={<PropertySchedule />} />
+        <Route path="headerLoggedIn/PropertyEdit/:id" element={<PropertyEdit />} />
+        <Route path="headerLoggedIn/PropertyAdd" element={<PropertyAdd />} />
 
         <Route path="headerLoggedIn/error" element={<Error />} />
         <Route path="*" element={<Error />} />

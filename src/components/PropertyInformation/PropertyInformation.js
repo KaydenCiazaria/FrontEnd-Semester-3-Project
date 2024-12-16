@@ -19,7 +19,7 @@ const PropertyInformation = ({ property }) => {
   };
 
   const handleViewSchedule = () => {
-    navigate("/headerLoggedIn/propertySchedule", {
+    navigate(`/headerLoggedIn/PropertySchedule/${property.id}`, {
       state: { property, type: "Schedule" },
     });
   };

@@ -41,7 +41,7 @@ const FormReservation = () => {
       };
 
       const result = await getuseid.json();
-      const userid = JSON.stringify(result.data).slice(1, -1);
+      const userid = JSON.stringify(result.data).slice(2, -2);
 
       const sendform = await fetch(form_end, {
         method: "POST",
