@@ -25,7 +25,7 @@ const PopVerification = ({ closeModal }) => {
         },
         body: JSON.stringify({
           verification_code: verifyCode,
-          userRate: rating
+          user_rate: rating
         })
       })
 
