@@ -6,6 +6,7 @@ const PopAreYourSure = ({ closeModal }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    localStorage.removeItem('jwtToken');
     navigate("/"); // Redirect to <Home /> on 'Yes'
     closeModal();
   };
