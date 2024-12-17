@@ -2,20 +2,48 @@ import React, { useState } from "react";
 import "./PopVerification.css";
 
 const PopVerification = ({ closeModal }) => {
-  const [verificationCode, setVerificationCode] = useState("");
-  const [rating, setRating] = useState(2.5); // Default slider value
+  const [verifyCode, setVerificationCode] = useState("");
+  const [rating, setRating] = useState(3); // Default slider value
 
   const handleSliderChange = (e) => {
-    setRating(parseFloat(e.target.value));
+    setRating(parseInt(e.target.value));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Verification Code:", verificationCode);
-    console.log("Rating Submitted:", rating);
-    // Perform your combined API call or logic here
-    alert(`Verification Code: ${verificationCode}, Rating: ${rating.toFixed(1)}`);
-    closeModal(); // Close the modal after submitting
+    
+    const token = localStorage.getItem("jwtToken");
+    const endpoint = "http://localhost:8080/api/reservation/verifyReview";
+
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${token}`,
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          verification_code: verifyCode,
+          userRate: rating
+        })
+      })
+
+      console.log(`Submitting: ${verifyCode} which is of type ${typeof verifyCode}`)
+      console.log(`Submitting: ${rating} which is of type ${typeof rating}`)
+
+      if (!response.ok) {
+        throw new Error(`${response.status}`)
+      }
+
+      console.log("Rating Submitted");
+      alert(`Reservation verified!`);
+      closeModal();
+
+    } catch (error) {
+      console.error(`Error submitting form: ${error}`)
+      alert("Reservation not found, please double check the verification code.");
+    }
   };
 
   return (
@@ -32,7 +60,7 @@ const PopVerification = ({ closeModal }) => {
             <label>Verification Code:</label>
             <input
               type="text"
-              value={verificationCode}
+              value={verifyCode}
               onChange={(e) => setVerificationCode(e.target.value)}
               required
             />
@@ -46,12 +74,12 @@ const PopVerification = ({ closeModal }) => {
                 type="range"
                 min="0"
                 max="5"
-                step="0.1"
+                step="1"
                 value={rating}
                 onChange={handleSliderChange}
                 className="slider"
               />
-              <span className="rating-display">{rating.toFixed(1)}</span>
+              <span className="rating-display">{rating}</span>
             </div>
           </div>
 
