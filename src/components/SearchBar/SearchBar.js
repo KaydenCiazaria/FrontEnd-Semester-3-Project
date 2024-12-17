@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./SearchBar.css";
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, onFilter }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [selectedCity, setSelectedCity] = useState("Where?");
   const [selectedPeople, setSelectedPeople] = useState("People");
@@ -11,23 +11,17 @@ const SearchBar = ({ onSearch }) => {
   const [endDate, setEndDate] = useState(null);
 
   const toggleDropdown = (dropdown) => {
-    // If the selected dropdown is already open, close it
-    if (openDropdown === dropdown) {
-      setOpenDropdown(null);
-    } else {
-      // Close other dropdowns and open the new one
-      setOpenDropdown(dropdown);
-    }
+    setOpenDropdown(openDropdown === dropdown ? null : dropdown);
   };
 
   const handleCitySelect = (city) => {
     setSelectedCity(city);
-    setOpenDropdown(null); // Close all dropdowns after selecting a city
+    setOpenDropdown(null);
   };
 
   const handlePeopleSelect = (people) => {
     setSelectedPeople(people);
-    setOpenDropdown(null); // Close all dropdowns after selecting people
+    setOpenDropdown(null);
   };
 
   const handleDateChange = (dates) => {
@@ -44,7 +38,7 @@ const SearchBar = ({ onSearch }) => {
         startDate: startDate ? startDate.toISOString() : null,
         endDate: endDate ? endDate.toISOString() : null,
       };
-      onSearch(searchParams); // Pass parameters to the parent or backend
+      onSearch(searchParams);
     }
   };
 
@@ -52,10 +46,7 @@ const SearchBar = ({ onSearch }) => {
     <div className="search-bar" onKeyDown={handleKeyDown} tabIndex="0">
       {/* City Dropdown */}
       <div className="dropdown-box">
-        <div
-          className="dropdown-header"
-          onClick={() => toggleDropdown("city")}
-        >
+        <div className="dropdown-header" onClick={() => toggleDropdown("city")}>
           {selectedCity}
         </div>
         {openDropdown === "city" && (
@@ -77,11 +68,12 @@ const SearchBar = ({ onSearch }) => {
 
       {/* Date Range Picker */}
       <div className="dropdown-box">
-        <div
-          className="dropdown-header"
-          onClick={() => toggleDropdown("date")}
-        >
-          {startDate ? `${startDate.toLocaleDateString()} - ${endDate ? endDate.toLocaleDateString() : ""}` : "Select dates"}
+        <div className="dropdown-header" onClick={() => toggleDropdown("date")}>
+          {startDate
+            ? `${startDate.toLocaleDateString()} - ${
+                endDate ? endDate.toLocaleDateString() : ""
+              }`
+            : "Select dates"}
         </div>
         {openDropdown === "date" && (
           <DatePicker
@@ -106,22 +98,26 @@ const SearchBar = ({ onSearch }) => {
         </div>
         {openDropdown === "people" && (
           <div className="dropdown-menu">
-            {[
-              "1-5 People",
-              "6-10 People",
-              "11-15 People",
-              "16+ People",
-            ].map((group, index) => (
-              <div
-                key={index}
-                className="dropdown-item"
-                onClick={() => handlePeopleSelect(group)}
-              >
-                {group}
-              </div>
-            ))}
+            {["1-5 People", "6-10 People", "11-15 People", "16+ People"].map(
+              (group, index) => (
+                <div
+                  key={index}
+                  className="dropdown-item"
+                  onClick={() => handlePeopleSelect(group)}
+                >
+                  {group}
+                </div>
+              )
+            )}
           </div>
         )}
+      </div>
+
+      {/* Filter Button */}
+      <div className="filter-button-container">
+        <button className="filter-button" onClick={onFilter}>
+          Filter
+        </button>
       </div>
     </div>
   );

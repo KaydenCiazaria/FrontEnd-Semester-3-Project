@@ -3,13 +3,20 @@
   gap: 10px; /* Adds spacing between the boxes */
   max-width: 100%;
   margin: 0 auto;
+  align-items: center;
+  background-color: white; /* White background */
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional shadow for better visibility */
+  z-index: 10; /* Ensures it's above other content */
+  position: relative; /* Ensures dropdown positioning starts from here */
 }
 
 .dropdown-box {
-  position: relative;
+  position: relative; /* Keeps dropdowns positioned relative to their parent */
   flex: 1;
-  max-width: 300px; /* Adjusted width of the dropdown box */
-  min-width: 150px; /* Ensures the box doesn't shrink too much */
+  max-width: 300px;
+  min-width: 150px;
 }
 
 .dropdown-header {
@@ -24,59 +31,73 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   color: black;
-  width: 100%; /* Make sure the header takes up full width */
-  height: 40px; /* Fixed height for all dropdowns */
+  height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .dropdown-menu {
-  position: absolute;
-  top: 100%; /* Aligns dropdown below the header */
+  position: absolute; /* Floats dropdown below the header */
+  top: 100%; /* Aligns dropdown just below the header */
   left: 0;
   right: 0;
-  background: white;
+  background: white; /* White background for the dropdown menu */
   border: 1px solid #ccc;
-  z-index: 10;
-  width: 100%; /* Ensure the dropdown takes the full width */
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 20; /* Ensures dropdown stays on top */
 }
 
 .dropdown-item {
   padding: 10px;
   text-align: center;
   cursor: pointer;
-  color: black; /* Set text color to black for dropdown items */
+  color: black;
 }
 
 .dropdown-item:hover {
   background: #f0f0f0;
 }
 
+.filter-button-container {
+  display: flex;
+  align-items: center;
+}
+
+.filter-button {
+  padding: 10px 20px;
+  border: 1px solid #007BFF;
+  background-color: #007BFF;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+}
+
+.filter-button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Fix for the DatePicker */
 .date-picker-input {
   width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-  box-sizing: border-box;
-  text-align: center;
-  cursor: pointer;
-  background: white;
-  color: black; /* Set text color to black */
+  z-index: 15; /* Ensure date picker doesn't overlap other dropdowns */
 }
 
-/* Ensure the calendar dropdown stays within the box */
 .react-datepicker__calendar {
-  width: 100% !important;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  background: white;
-  max-height: 400px; /* Limit calendar height */
-  overflow: auto; /* Allow scrolling */
+  position: absolute;
+  z-index: 25; /* Make sure the calendar stays on top */
+  top: 100%;
+  left: 0;
 }
 
-/* Prevent the calendar from resizing the date picker header */
 .react-datepicker__input-container {
   width: 100% !important;
   display: flex;
