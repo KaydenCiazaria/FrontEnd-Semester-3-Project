@@ -43,31 +43,43 @@ const NotificationCard = ({ villa }) => {
   const renderContent = () => {
     if (villa.type === "reserved-villas") {
       return (
-        <>
-          <h3>{villa.title}</h3>
-          <p>Price: {villa.price}</p>
-          <p>Address: {villa.address}</p>
-          <p>Reserved Dates: {villa.date}</p>
-          <p>Message from user: {villa.message}</p>
-          <p>Verification code:{villa.verificationCode}</p>
+        <div className="rate-paragraph">
+          <div>
+            <h3>{villa.title}</h3>
+            <p>Price: {villa.price}</p>
+            <p>Address: {villa.address}</p>
+            <p>Reserved Dates: {villa.date}</p>
+            <p>Message from user: {villa.message}</p>
+            <p>Verification code:{villa.verificationCode}</p>
+          </div>
           <button onClick={buttonFunction}>More Information!</button>
-        </>
+          <div></div>
+        </div>
       );
     } else if (villa.type === "villa-approval") {
       return (
-        <>
-          <h3>{villa.title}</h3>
-          <p>{villa.title} has been reserved.</p>
-          <button onClick={buttonFunction}>Approve Reservation</button>
-        </>
+        <div className="rate-paragraph">
+          <div>
+            <h3>{villa.title}</h3>
+            <p>{villa.title} has been reserved.</p>
+          </div>
+          <div>
+            <button onClick={buttonFunction}>Approve Reservation</button>
+          </div>
+        </div>
       );
     } else if (villa.type === "villa-rate") {
       return (
-        <>
-          <h3>{villa.title}</h3>
-          <p>Rate {villa.title} to share your experience.</p>
-          <button onClick={buttonFunction}>Rate Now</button>
-        </>
+        <div className="rate-paragraph">
+          <div>
+            <h3>{villa.title}</h3>
+            <p>Rate {villa.title} to share your experience.</p>
+          </div>
+          <div>
+            <button onClick={buttonFunction}>Rate Now</button>
+          </div>
+          
+        </div>
       );
     }
     return null;

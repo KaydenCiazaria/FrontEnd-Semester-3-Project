@@ -1,0 +1,56 @@
+/* Container for the NotificationCard */
+.NotificationCard {
+    background-color: #ffffff; /* White background */
+    border: 2px solid black; /* Yellow border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 16px; /* Inner spacing */
+    margin: 10px 0; /* Vertical spacing between cards */
+    width: 100%; /* Use full width of content-box */
+    box-sizing: border-box; /* Include padding in width */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  /* Title styling */
+  .NotificationCard h3 {
+    font-size: 1.2rem;
+    color: #333; /* Dark gray text */
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  
+  /* Paragraph styling */
+  .NotificationCard p {
+    font-size: 0.95rem;
+    color: #555; /* Slightly lighter gray text */
+    margin: 5px 0;
+    line-height: 1.4; /* Improve readability */
+  }
+  
+  /* Button Styling */
+  .NotificationCard button {
+    background-color: #f0c14b; /* Yellow background */
+    color: #333; /* Dark text for contrast */
+    border: 1px solid #a88734; /* Border for definition */
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    align-self: flex-end; /* Align button to the far right */
+    transition: background-color 0.2s ease, border 0.2s ease;
+  }
+  
+  /* Button Hover Effect */
+  .NotificationCard button:hover {
+    background-color: #e2b23a; /* Darker yellow */
+    border-color: #8c6f29;
+  }
+
+  .rate-paragraph {
+    display: flex;
+    justify-content: space-between; /* Space between text and button */
+    align-items: center; /* Vertically aligns both items */
+    margin: 10px 0; /* Adds spacing above and below */
+  }
+  

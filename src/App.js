@@ -41,6 +41,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/headerLoggedIn/" element={<LoggedInHome />} />
         <Route path="/headerPlain/register" element={<Register />} />
+        <Route path="/VillaInformation/headerPlain/register" element={<Register />} />
         <Route path="/headerLoggedIn/reservationDetail" element={<ReservationDetail />} />
         
         <Route path="/headerLoggedIn/notificationRenter" element={<NotificationRenter />} />
