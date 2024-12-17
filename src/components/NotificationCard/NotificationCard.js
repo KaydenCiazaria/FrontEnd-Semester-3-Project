@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import PopRate from ".././PopUps/PopRate/PopRate";
 import PopVerification from ".././PopUps/PopVerification/PopVerification";
 import "./NotificationCard.css";
 
@@ -22,15 +21,13 @@ const NotificationCard = ({ villa }) => {
   const renderModal = () => {
     if (villa.type === "villa-approval") {
       return <PopVerification closeModal={closeModal} />;
-    } else if (villa.type === "villa-rate") {
-      return <PopRate closeModal={closeModal} />;
     }
     return null; // No modal for other types
   };
 
   // Function to handle button actions
   const buttonFunction = () => {
-    if (villa.type === "villa-approval" || villa.type === "villa-rate") {
+    if (villa.type === "villa-approval") {
       handleOpenModal();
     } else {
       navigate("/headerLoggedIn/reservationDetail", {
@@ -50,10 +47,9 @@ const NotificationCard = ({ villa }) => {
             <p>Address: {villa.address}</p>
             <p>Reserved Dates: {villa.date}</p>
             <p>Message from user: {villa.message}</p>
-            <p>Verification code:{villa.verificationCode}</p>
+            <p>Verification Code: {villa.verificationCode}</p>
           </div>
           <button onClick={buttonFunction}>More Information!</button>
-          <div></div>
         </div>
       );
     } else if (villa.type === "villa-approval") {
@@ -64,21 +60,8 @@ const NotificationCard = ({ villa }) => {
             <p>{villa.title} has been reserved.</p>
           </div>
           <div>
-            <button onClick={buttonFunction}>Approve Reservation</button>
+            <button onClick={buttonFunction}>Reservation Code</button>
           </div>
-        </div>
-      );
-    } else if (villa.type === "villa-rate") {
-      return (
-        <div className="rate-paragraph">
-          <div>
-            <h3>{villa.title}</h3>
-            <p>Rate {villa.title} to share your experience.</p>
-          </div>
-          <div>
-            <button onClick={buttonFunction}>Rate Now</button>
-          </div>
-          
         </div>
       );
     }
