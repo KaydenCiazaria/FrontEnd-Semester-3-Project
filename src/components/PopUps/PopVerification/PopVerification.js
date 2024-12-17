@@ -29,9 +29,6 @@ const PopVerification = ({ closeModal }) => {
         })
       })
 
-      console.log(`Submitting: ${verifyCode} which is of type ${typeof verifyCode}`)
-      console.log(`Submitting: ${rating} which is of type ${typeof rating}`)
-
       if (!response.ok) {
         throw new Error(`${response.status}`)
       }
