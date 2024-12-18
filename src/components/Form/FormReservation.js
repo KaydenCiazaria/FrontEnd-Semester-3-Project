@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import './Form.css';
 import './FormReservation.css';
+import { useNavigate } from "react-router-dom";
 
 const FormReservation = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     message: "",
   });
@@ -64,6 +66,7 @@ const FormReservation = () => {
 
       const resresult = await sendform.json();
       console.log("Form submitted successfully", resresult);
+      navigate("/headerLoggedIn");
 
     }
 
